@@ -1,0 +1,10 @@
+/* src/components/Layout.css */
+.layout {
+    display: flex;
+    min-height: 100vh; /* Ensure full height */
+}
+
+.main-content {
+    flex: 1; /* Take remaining space */
+    padding: 20px;
+}
