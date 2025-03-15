@@ -1,65 +1,34 @@
-// src/components/ProductList.js
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { getProducts } from '../api/products';
-import './ProductList.css';
+import { Link } from 'react-router-dom';
 
 function ProductList() {
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const data = await getProducts();
-                setProducts(data);
-                setLoading(false);
-            } catch (err) {
-                setError(err.message || 'Failed to fetch products');
-                setLoading(false);
-            }
-        };
-
-        fetchProducts();
+        axios.get('/api/products/')
+            .then(response => {
+                setProducts(response.data);
+            })
+            .catch(error => {
+                console.error("Error fetching products:", error);
+            });
     }, []);
 
-    if (loading) {
-        return <p>Loading products...</p>;
-    }
-
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
-
     return (
-        <div className="product-list-container">
-            <h2>Product List</h2>
-            <table className="product-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Web ID</th>
-                        <th>Category</th>
-                        <th>Is Active</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
-                        {/* Add more table headers for other product fields */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map(product => (
-                        <tr key={product.id}>
-                            <td>{product.name}</td>
-                            <td>{product.web_id}</td>
-                            <td>{product.category}</td>
-                            <td>{product.is_active ? 'Yes' : 'No'}</td>
-                            <td>{new Date(product.created_at).toLocaleDateString()}</td>
-                            <td>{new Date(product.updated_at).toLocaleDateString()}</td>
-                            {/* Add more table data cells for other product fields */}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="row">
+            {products.map(product => (
+                <div className="col-md-4" key={product.id}>
+                    <div className="card mb-4">
+                        <img src={product.images && product.images.length > 0 ? product.images[0].image : "http://via.placeholder.com/200x150"} className="card-img-top" alt={product.name} />
+                        <div className="card-body">
+                            <h5 className="card-title">{product.name}</h5>
+                            <p className="card-text">{product.description.substring(0, 100)}...</p>
+                            <Link to={`/products/${product.id}`} className="btn btn-primary">View Details</Link>
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

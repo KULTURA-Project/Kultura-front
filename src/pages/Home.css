@@ -1,0 +1,25 @@
+/* Add this to your global CSS file */
+@media (max-width: 768px) {
+    .feature-products {
+      width: 100%;
+    }
+    .inner-slide {
+      flex-wrap: wrap;
+    }
+    .feature-product {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .feature-products {
+      width: 100%;
+    }
+    .inner-slide {
+      flex-wrap: wrap;
+    }
+    .feature-product {
+      width: 100%;
+    }
+  }
+  

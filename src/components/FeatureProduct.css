@@ -1,0 +1,33 @@
+/* Add this to your global CSS file */
+.feature-product {
+    width: 300px; /* Adjust the width as needed */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd; /* Visible border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Optional shadow */
+  }
+  
+  .image-container {
+    height: 200px; /* Fixed height for image container */
+    border: 1px solid #ddd; /* Visible border around image */
+    border-radius: 10px 10px 0 0; /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure image fits within container */
+  }
+  
+  .feature-product h2 {
+    font-size: 20px; /* Larger font size for heading */
+  }
+  
+  .feature-product p {
+    font-size: 16px; /* Larger font size for description */
+  }
+  
