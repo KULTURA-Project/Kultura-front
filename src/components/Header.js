@@ -62,9 +62,11 @@ const Header = () => {
         >
           {categories.length > 0 ? (
             categories.map((category) => (
-              <Link key={category.id} to={`/category/${category.name.toLowerCase()}`} className="category-item">
-                {category.name}
-              </Link>
+             // components/Header.js
+<Link key={category.id} to={`/category-products/${category.id}`} className="category-item">
+  {category.name}
+</Link>
+
             ))
           ) : (
             <p>Loading categories...</p>

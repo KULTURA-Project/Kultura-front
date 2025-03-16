@@ -1,0 +1,235 @@
+/* ProductPage.css */
+
+.product-detail-page {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-info-container {
+    display: flex; /* Flex container for image and info */
+    width: 100%;
+}
+
+.product-image-section {
+    width: 50%; /* Adjust width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnails {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
+.thumbnail {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-info-section {
+    width: 50%; /* Adjust width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 24px;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.wishlist-button {
+    background-color: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.product-price {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Tabs and Tab Content */
+.product-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+.product-tabs button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #777;
+}
+
+.product-tabs button.active {
+    border-bottom: 3px solid #a38600;
+    color: #a38600;
+}
+
+.tab-content {
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* Similar Products */
+.similar-products {
+    margin-top: 30px;
+}
+
+.similar-products h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.similar-products-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.similar-product-card {
+    width: 200px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.similar-product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.similar-product-card p {
+    margin-bottom: 5px;
+}
+
+/* Quantity Selector Styles */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.quantity-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.quantity-controls input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Add to Cart Button Styles */
+.add-to-cart-button {
+    background-color: #a38600;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+
+.similar-products {
+    margin-top: 30px;
+  }
+  
+  .similar-products h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .similar-products-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 15px;
+  }
+  
+  .similar-product-card {
+    width: 200px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+  }
+  
+  .similar-product-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
+  
+  .similar-product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .similar-product-card p {
+    margin-bottom: 5px;
+    font-weight: bold; /* Make product name bold */
+  }
