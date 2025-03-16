@@ -1,84 +1,106 @@
 /* Header.css */
 .header {
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    position: relative;
-    width: 100%;
-  }
-  
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Search Bar */
-  .search-bar {
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 8px 15px;
-    width: 300px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .search-bar:focus {
-    border-color: #333;
-  }
-  
-  /* User & Cart Icons */
-  .icon-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .icon-links a {
-    color: #4a4a4a;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .icon-links a:hover {
-    color: black;
-  }
-  
-  /* Categories Slider */
-  .categories-slider {
-    overflow-x: hidden;
-    margin-top: 10px;
-    padding: 10px 0;
-    white-space: nowrap;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .categories-list {
-    display: flex;
-    gap: 15px;
-    padding: 10px;
-  }
-  
-  .category-item {
-    background: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ddd;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .category-item:hover {
-    background: black;
-    color: white;
-    border-color: black;
-  }
-  
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 300px;
+  outline: none;
+}
+
+.icon-links a {
+  margin-left: 20px;
+  color: #555;
+}
+
+/* Categories Slider Container */
+.categories-slider-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* For positioning buttons */
+}
+
+/* Slider Buttons */
+.slider-button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.slider-button:hover {
+  color: #333;
+}
+
+.slider-button.left {
+  left: 0;
+}
+
+.slider-button.right {
+  right: 0;
+}
+
+/* Categories Slider */
+.categories-slider {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+  width: 100%; /* Take up remaining space */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+}
+
+.categories-slider::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}
+
+/* Categories List */
+.categories-list {
+  display: flex;
+  cursor: grab;
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  padding: 0 30px; /* Add some padding to the sides */
+}
+
+.category-item {
+  padding: 8px 15px;
+  margin: 0 10px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #666;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.category-item:hover {
+  background-color: #e9e9e9;
+  color: #333;
+}
+
+.category-item.active {
+  background-color: #337ab7;
+  color: white;
+  border-color: #337ab7;
+}
+

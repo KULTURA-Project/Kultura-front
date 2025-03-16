@@ -5,6 +5,7 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+    position: relative; /* Make it a positioning context */
   }
   
   .product-card:hover {
@@ -14,6 +15,7 @@
   .product-link {
     text-decoration: none;
     color: inherit;
+    display: block; /* Make it fill the card */
   }
   
   .product-image {
@@ -46,3 +48,18 @@
     color: #337ab7;
   }
   
+  /* Wishlist Icon Styles */
+  .wishlist-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #aaa; /* Light grey color */
+    transition: color 0.3s ease;
+    z-index: 1; /* Ensure it's above other elements */
+  }
+  
+  .wishlist-icon:hover {
+    color: #777; /* Darker grey on hover */
+  }
