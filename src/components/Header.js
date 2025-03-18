@@ -10,6 +10,7 @@ const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
     const sliderRef = useRef(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('token') ? true : false);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -46,6 +47,12 @@ const Header = () => {
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        window.location.href = '/';
     };
 
     return (
@@ -91,9 +98,18 @@ const Header = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                 >
-                                    <Link to="/account">Profile</Link>
-                                    <Link to="/orders">Orders</Link>
-                                    <Link to="/logout">Logout</Link>
+                                    {isLoggedIn ? (
+                                        <>
+                                            <Link to="/account">Profile</Link>
+                                            <Link to="/orders">Orders</Link>
+                                            <Link to="/" onClick={handleLogout}>Logout</Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link to="/login">Login</Link>
+                                            <Link to="/register">Register</Link>
+                                        </>
+                                    )}
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -156,7 +172,15 @@ const Header = () => {
                         <Link to="/shop">Shop</Link>
                         <Link to="/about">About Us</Link>
                         <Link to="/contact">Contact</Link>
-                         <Link to="/wishlist">Wishlist</Link> {/* ADDED */}
+                        <Link to="/wishlist">Wishlist</Link>
+                        {isLoggedIn ? (
+                            <Link to="/" onClick={handleLogout}>Logout</Link>
+                        ) : (
+                            <>
+                                <Link to="/login">Login</Link>
+                                <Link to="/register">Register</Link>
+                            </>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>

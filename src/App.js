@@ -9,8 +9,11 @@ import AboutUsPage from "./pages/AboutUsPage";
 import CategoryProductsPage from "./pages/CategoryProductsPage";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
+import LoginPage from './pages/LoginPage';
+import LogoutPage from './pages/LogoutPage';
 import OrdersPage from "./pages/OrdersPage";
 import ProfilePage from "./pages/ProfilePage";
+import RegisterPage from './pages/RegisterPage';
 import ShopPage from "./pages/ShopPage";
 import WishlistPage from "./pages/WishlistPage";
 
@@ -28,6 +31,10 @@ function App() {
                         <Route path="/orders" element={<OrdersPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/wishlist" element={<WishlistPage />} />
+                        <Route path="/orders" element={<OrdersPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/logout" element={<LogoutPage />} />
                         <Route path="/category-products/:category_id" element={<CategoryProductsPage />} />
                         <Route path="/products/:slug" element={<ProductPage />} />
                         <Route path="/products/:id" element={<ProductDetail />} />

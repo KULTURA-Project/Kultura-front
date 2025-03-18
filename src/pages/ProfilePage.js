@@ -1,32 +1,39 @@
-import React from 'react';
-import './ProfilePage.css'; // Import CSS file
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const ProfilePage = () => {
-    // Dummy user data (replace with your actual data fetching logic)
-    const user = {
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        address: '123 Main St, Anytown, USA',
-        phone: '555-123-4567',
-    };
+    const [profile, setProfile] = useState(null);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                try {
+                    const response = await axios.get('http://127.0.0.1:8000/customers/profile/', {
+                        headers: {
+                            'Authorization': `Token ${token}`
+                        }
+                    });
+                    setProfile(response.data);
+                } catch (error) {
+                    console.error('Error fetching profile:', error);
+                }
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
+    if (!profile) {
+        return <div>Loading profile...</div>;
+    }
 
     return (
-        <div className="profile-page">
-            <h1>My Profile</h1>
-            <div className="profile-details">
-                <div className="profile-section">
-                    <h2>Account Information</h2>
-                    <p><strong>Name:</strong> {user.name}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                </div>
-                <div className="profile-section">
-                    <h2>Contact Information</h2>
-                    <p><strong>Address:</strong> {user.address}</p>
-                    <p><strong>Phone:</strong> {user.phone}</p>
-                </div>
-                {/* Add more profile sections as needed */}
-                <button className="edit-profile-button">Edit Profile</button>
-            </div>
+        <div>
+            <h2>Customer Profile</h2>
+            <p>Phone Number: {profile.phone_number}</p>
+            <p>Address: {profile.address}</p>
+            {/* Add more profile details here */}
         </div>
     );
 };
