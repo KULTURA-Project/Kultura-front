@@ -1,4 +1,3 @@
-// pages/Home.js
 import React, { useEffect, useState } from 'react';
 import FeatureProduct from '../components/FeatureProduct';
 import HeroSection from "../components/HeroSection";
@@ -26,7 +25,6 @@ const Home = () => {
         fetchCategories();
     }, []);
 
-
     const handleSlideLeft = () => {
         if (slideIndex > 0) {
             setSlideIndex(slideIndex - 1);
@@ -50,8 +48,8 @@ const Home = () => {
                     <button className="slider-button left" onClick={handleSlideLeft}>
                         <i className="fas fa-chevron-left"></i>
                     </button>
-                    <div className="feature-products-container overflow-hidden">
-                        <div className="feature-products-inner flex transition-transform duration-300 ease-in-out"
+                    <div className="feature-products-container">
+                        <div className="feature-products-inner"
                             style={{ transform: `translateX(-${slideIndex * 300}px)` }}>
                             {featuredProducts.map((product) => (
                                 <FeatureProduct key={product.id} product={product} />
@@ -71,8 +69,8 @@ const Home = () => {
                     {categories.map(category => (
                         <div key={category.id} className="category-card">
                             <img src={category.image} alt={category.name} className="category-image" />
-                            <h3>{category.name}</h3>
-                            <p>{category.description}</p>
+                            <h3 className="category-name">{category.name}</h3>
+                            <p className="category-description">{category.description}</p>
                         </div>
                     ))}
                 </div>

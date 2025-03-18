@@ -8,19 +8,19 @@ const HeroSection = () => {
             id: 1,
             title: 'Discover Unique Handcrafted Items',
             description: 'Explore our curated collection of artisan-made goods and support independent creators.',
-            image: 'https://via.placeholder.com/1920x800/4CAF50/FFFFFF?text=Slide+1', // Replace with your image URL
+            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
         },
         {
             id: 2,
             title: 'Elevate Your Home Decor',
             description: 'Find the perfect pieces to add character and style to your living space.',
-            image: 'https://via.placeholder.com/1920x800/3F51B5/FFFFFF?text=Slide+2', // Replace with your image URL
+            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
         },
         {
             id: 3,
             title: 'Support Ethical and Sustainable Practices',
             description: 'Shop with confidence knowing that our products are ethically sourced and environmentally friendly.',
-            image: 'https://via.placeholder.com/1920x800/9C27B0/FFFFFF?text=Slide+3', // Replace with your image URL
+            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
         },
     ];
 

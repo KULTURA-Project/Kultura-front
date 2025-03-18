@@ -1,0 +1,21 @@
+.wishlist-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.wishlist-page h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.wishlist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wishlist-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}

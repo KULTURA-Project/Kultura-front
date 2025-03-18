@@ -1,256 +1,129 @@
-/* CategoryProductsPage.css */
 .category-products-page {
   display: flex;
-  min-height: 100vh;
-  background-color: #f9f9f9; /* Very light grey fallback */
+  max-width: 1500px; /* Increased the max-width */
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
 }
 
-/* Sidebar styles */
 .sidebar {
-  width: 250px;
-  padding: 20px;
-  background-color: #fff; /* White Background */
-  border-right: 1px solid #eee; /* Lighter border */
+  width: 250px; /* Increased the width of the sidebar */
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+  height: calc(100vh - 40px);
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .sidebar-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #a38600; /* Gold color for title */
 }
 
 .filter-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .filter-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
   display: block;
-  margin-bottom: 10px;
-  color: #333; /* Dark grey for labels */
 }
 
-/* Style the select elements (dropdowns) */
+.filter-group input[type="number"],
+.filter-group input[type="checkbox"],
 .filter-group select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  font-size: 14px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
-  color: #555;
-  appearance: none; /* Remove default arrow in some browsers */
-  -webkit-appearance: none; /* Remove default arrow in Chrome/Safari */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5' viewBox='0 0 10 5'%3E%3Cpath d='M0 0l5 5 5-5z' fill='%23555'/%3E%3C/svg%3E");
-  background-position: right 8px top 50%;
-  background-repeat: no-repeat;
-  background-size: 10px;
 }
 
-.filter-group select:focus {
-  border-color: #a38600; /* Gold color on focus */
-  outline: none;
+.checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-/* Style the range input */
-.filter-group input[type="range"] {
-  width: 100%;
-  height: 8px;
-  border-radius: 5px;
-  background: #ddd;
-  outline: none;
-  -webkit-appearance: none;
-  margin-top: 5px;
+.checkbox-list div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #777;
 }
 
-/* Style the range thumb */
-.filter-group input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #a38600; /* Gold color for thumb */
-  cursor: pointer;
+.checkbox-list input {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-.filter-group input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #a38600; /* Gold color for thumb */
-  cursor: pointer;
-  border: none;
-}
-
-/* Product grid container styles */
 .product-grid-container {
-  flex-grow: 1;
-  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .page-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333; /* Dark grey for title */
 }
 
-/* Product grid styles */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-/* Styles for the breadcrumb navigation */
-.breadcrumb {
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  font-size: 14px;
+.product-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-.breadcrumb a {
-  color: #007bff;
-  text-decoration: none;
+@media (max-width: 1024px) {
+  .category-products-page {
+      flex-direction: column;
+  }
+
+  .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+      height: auto;
+  }
+
+  .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
 }
 
-.breadcrumb span {
-  margin: 0 5px;
-  color: #6c757d;
-}
+@media (max-width: 768px) {
+  .category-products-page {
+      flex-direction: column;
+  }
 
-.breadcrumb span:last-child {
-  font-weight: bold;
-}
+  .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+      height: auto;
+  }
 
-/* Layout Options Styles */
-.layout-options {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 20px;
-}
-
-.layout-options button {
-  background-color: #fff; /* White buttons */
-  border: 1px solid #a38600; /* Gold border */
-  padding: 8px 16px;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #a38600; /* Gold text */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.layout-options button:hover {
-  background-color: #a38600; /* Gold background on hover */
-  color: #fff; /* White text on hover */
-}
-
-/*Fixed Add to Cart Button Styles*/
-.fixed-add-to-cart {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 10px 20px;
-  text-align: center;
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 100; /* Ensure it stays on top */
-}
-
-.fixed-add-to-cart button {
-  background-color: #a38600; /* Gold background */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fixed-add-to-cart button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.fixed-add-to-cart button svg {
-  margin-right: 5px;
-}
-
-/* Ensure ProductCard styles are compatible with all layouts */
-/*  You might need to adjust these based on your ProductCard.css */
-.product-card {
-  /* Base styles (common to all layouts) */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease;
-  position: relative;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.product-card h3 {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-.product-card .product-price {
-  font-size: 1em;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Adjustments for 'list' layout */
-.product-list .product-card {
-  display: flex;
-  flex-direction: row;
-  text-align: left;
-  align-items: center;
-}
-
-.product-list .product-card img {
-  width: 100px;
-  margin-right: 10px;
-}
-
-/* Adjustments for 'columns' layout */
-.product-columns .product-card {
-  flex: 1;
-  margin-bottom: 0;
-}
-
-/* Styling for the selected state */
-.product-card.selected {
-  border: 2px solid #a38600; /* Gold border to indicate selection */
-}
-
-/* Styling for the checkmark icon */
-.selected-icon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: #a38600; /* Gold checkmark */
-  font-size: 20px;
-  z-index: 2; /* Ensure it's above the image */
+  .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 }

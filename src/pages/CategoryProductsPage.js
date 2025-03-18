@@ -48,7 +48,6 @@ const CategoryProductsPage = () => {
                 const allVariants = {};
                 const allSpecifications = {};
                 data.forEach(product => {
-                    // Check if product and its properties exist before accessing them
                     if (product && product.variants) {
                         product.variants.forEach(variant => {
                             if (variant && variant.name && variant.value) {
@@ -147,11 +146,9 @@ const CategoryProductsPage = () => {
 
     return (
         <div className="category-products-page">
-            {/* Sidebar */}
             <aside className="sidebar">
                 <h2 className="sidebar-title">Filters</h2>
 
-                {/* Price Range Filter */}
                 <div className="filter-group">
                     <label>Price Range: {priceRange[1]}</label>
                     <input
@@ -163,7 +160,6 @@ const CategoryProductsPage = () => {
                     />
                 </div>
 
-                {/* Product Type Filter */}
                 <div className="filter-group">
                     <label>Product Type:</label>
                     <select value={selectedProductType} onChange={handleProductTypeChange}>
@@ -174,7 +170,6 @@ const CategoryProductsPage = () => {
                     </select>
                 </div>
 
-                {/* Variants Filter */}
                 {Object.keys(variants).length > 0 && (
                     Object.keys(variants).map(variantName => (
                         <div className="filter-group" key={variantName}>
@@ -192,7 +187,6 @@ const CategoryProductsPage = () => {
                     ))
                 )}
 
-                {/* Specifications Filter */}
                 {Object.keys(specifications).length > 0 && (
                     Object.keys(specifications).map(specName => (
                         <div className="filter-group" key={specName}>
@@ -211,7 +205,6 @@ const CategoryProductsPage = () => {
                 )}
             </aside>
 
-            {/* Product Grid */}
             <main className="product-grid-container">
                 <h1 className="page-title">Products in {categoryName}</h1>
                 <div className="product-grid">
@@ -220,7 +213,7 @@ const CategoryProductsPage = () => {
                             <ProductCard key={product.id} product={product} />
                         ))
                     ) : (
-                        <p>No products found with the selected filters.</p>
+                        <p>No products found.</p>
                     )}
                 </div>
             </main>

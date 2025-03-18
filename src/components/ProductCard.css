@@ -1,65 +1,141 @@
-/* components/ProductCard.css */
 .product-card {
-    max-width: 250px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    position: relative; /* Make it a positioning context */
-  }
-  
-  .product-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .product-link {
-    text-decoration: none;
-    color: inherit;
-    display: block; /* Make it fill the card */
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  
-  .product-info {
-    padding: 20px;
-  }
-  
-  .product-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .product-category {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
-  }
-  
-  .product-price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #337ab7;
-  }
-  
-  /* Wishlist Icon Styles */
-  .wishlist-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    color: #aaa; /* Light grey color */
-    transition: color 0.3s ease;
-    z-index: 1; /* Ensure it's above other elements */
-  }
-  
-  .wishlist-icon:hover {
-    color: #777; /* Darker grey on hover */
-  }
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin: 10px;
+  width: 300px; /* Increased width */
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Keeps the height fixed */
+  box-shadow: none; /* No shadow */
+  border: none; /* No border */
+  position: relative; /* Needed for positioning the button correctly */
+}
+
+.product-card:hover {
+  transform: none; /* No hover effect on card */
+  box-shadow: none; /* No shadow on hover */
+}
+
+.selected {
+  background-color: #f8f8f8; /* Subtle background change on selection */
+}
+
+.image-container {
+  position: relative;
+  height: 80%; /* Image takes 60% of the height */
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.1);
+}
+
+.no-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  color: #888;
+  height: 100%;
+  font-size: 14px;
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.wishlist-icon:hover {
+  background-color: #f8f8f8;
+}
+
+.product-info {
+  padding: 10px 15px;
+  text-align: left; /* Align text to the left */
+  height: 40%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-name {
+  font-size: 14px; /* Reduced font size */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: px;
+}
+
+.product-category {
+  font-size: 12px; /* Reduced font size */
+  color: #777;
+  margin-bottom: 1px;
+}
+
+.product-price {
+  font-size: 16px; /* Reduced font size */
+  font-weight: bold;
+  color: #e74c3c;
+  margin-left: auto; /* Align price to the right */
+}
+
+.product-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  visibility: hidden; /* Hide actions by default */
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.product-card:hover .product-actions {
+  visibility: visible;
+  opacity: 1;
+}
+
+.add-to-cart-button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #27ae60;
+}
+
+.add-to-cart-button svg {
+  margin-right: 8px;
+}
+
+.selected-icon {
+  color: #FFD700;
+  font-size: 18px;
+}

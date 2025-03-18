@@ -1,0 +1,40 @@
+.contact-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.contact-page h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-page label {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+}
+
+.contact-page input[type="text"],
+.contact-page input[type="email"],
+.contact-page textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contact-page button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-page button[type="submit"]:hover {
+    background-color: #45a049;
+}
