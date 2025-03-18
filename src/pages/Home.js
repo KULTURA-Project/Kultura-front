@@ -98,10 +98,7 @@ const Home = () => {
                 <button className="cta-button">Shop Now</button>
             </section>
 
-            {/* Footer */}
-            <footer className="footer">
-                <p>&copy; 2025 Kultura. All rights reserved.</p>
-            </footer>
+    
         </div>
     );
 };
