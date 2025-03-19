@@ -1,41 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const ProfilePage = () => {
-    const [profile, setProfile] = useState(null);
+  const { user, handleLogout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            const token = localStorage.getItem('token');
-            if (token) {
-                try {
-                    const response = await axios.get('http://127.0.0.1:8000/customers/profile/', {
-                        headers: {
-                            'Authorization': `Token ${token}`
-                        }
-                    });
-                    setProfile(response.data);
-                } catch (error) {
-                    console.error('Error fetching profile:', error);
-                }
-            }
-        };
+  if (!user) return <p>Loading...</p>;
 
-        fetchProfile();
-    }, []);
-
-    if (!profile) {
-        return <div>Loading profile...</div>;
-    }
-
-    return (
-        <div>
-            <h2>Customer Profile</h2>
-            <p>Phone Number: {profile.phone_number}</p>
-            <p>Address: {profile.address}</p>
-            {/* Add more profile details here */}
-        </div>
-    );
+  return (
+    <div>
+      <h2>Welcome, {user.username}</h2>
+      <p>Email: {user.email}</p>
+      <p>Phone Number: {user.phone_number}</p>
+      <button onClick={() => { handleLogout(); navigate("/login"); }}>Logout</button>
+    </div>
+  );
 };
 
 export default ProfilePage;

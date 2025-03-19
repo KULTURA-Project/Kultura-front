@@ -1,69 +1,55 @@
-import axios from 'axios';
-import Cookies from 'js-cookie'; // Import js-cookie
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AuthStyles.css';
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { login } from "../services/authService"; // Assume login returns user data
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext); // Get setUser from context
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const csrfToken = Cookies.get('csrftoken'); // Get CSRF token from cookie
-            const response = await axios.post(
-                'http://127.0.0.1:8000/api/customers/login/',
-                {
-                    email: email,
-                    password: password,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json', // Ensure Content-Type is set
-                        'X-CSRFToken': csrfToken, // Include CSRF token in headers
-                    },
-                }
-            );
-            // Store the token in local storage
-            localStorage.setItem('token', response.data.token);
-            console.log('Login successful:', response.data);
-            navigate('/'); // Redirect to home page after successful login
-        } catch (error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
-            // Handle login errors (e.g., display error messages)
-        }
-    };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    return (
-        <div className="auth-container">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await login(formData); // Assuming login returns user data
+      setUser(data); // Set user in context
+      localStorage.setItem("user", JSON.stringify(data)); // Optionally store user in localStorage
+      navigate("/profile");
+    } catch (err) {
+      setError("Invalid credentials");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Login</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 };
 
 export default LoginPage;
