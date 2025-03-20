@@ -1,22 +1,21 @@
-// components/FeatureProduct.js
+// FeaturedProducts.js
 import React from 'react';
-import './FeatureProduct.css';
-// components/FeatureProduct.js
 
-
-const FeatureProduct = ({ product, className }) => {
+const FeaturedProducts = ({ products }) => {
   return (
-    <div className={`feature-product ${className}`}>
-      <div className="image-container">
-        <img src={product.image} alt={product.name} className="product-image" />
+    <section className="featured-products-section">
+      <h2>Featured Products</h2>
+      <div className="featured-products-grid">
+        {products.map(product => (
+          <div key={product.id} className="product-card">
+            <img src={product.image} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>Price: ${product.price}</p>
+          </div>
+        ))}
       </div>
-      <h2 className="text-lg font-bold mb-2">{product.name}</h2>
-      <p className="text-gray-600 mb-4">{product.description}</p>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        View Details
-      </button>
-    </div>
+    </section>
   );
 };
 
-export default FeatureProduct;
+export default FeaturedProducts;

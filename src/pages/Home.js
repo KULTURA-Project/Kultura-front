@@ -1,106 +1,82 @@
+// Home.js  <MostWishedProduct product={mostWishedProduct} />       <Promotions promotions={promotions} />
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import FeatureProduct from '../components/FeatureProduct';
-import HeroSection from "../components/HeroSection";
-import { featuredProducts } from '../utils/products'; // Assuming you have this
-import './Home.css';
+import Categories from '../components/Categories';
+import FeaturedProducts from '../components/FeaturedProducts';
+import HeroSection from '../components/HeroSection';
+import Recommendations from '../components/Recommendations';
+
 
 const Home = () => {
-    const [slideIndex, setSlideIndex] = useState(0);
-    const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [promotions, setPromotions] = useState([]);
+  const [mostWishedProduct, setMostWishedProduct] = useState({});
+  const [recommendations, setRecommendations] = useState([]);
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await fetch('http://127.0.0.1:8000/api/categories/'); // Replace with your API endpoint
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setCategories(data);
-            } catch (error) {
-                console.error('Error fetching categories:', error);
-            }
-        };
-
-        fetchCategories();
-    }, []);
-
-    const handleSlideLeft = () => {
-        if (slideIndex > 0) {
-            setSlideIndex(slideIndex - 1);
-        }
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/categories/');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
     };
 
-    const handleSlideRight = () => {
-        if (slideIndex < featuredProducts.length - 3) {
-            setSlideIndex(slideIndex + 1);
-        }
+    const fetchFeaturedProducts = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/home/api/featured-products/');
+        setFeaturedProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching featured products:', error);
+      }
     };
 
-    return (
-        <div className="home-page">
-            <HeroSection />
+    const fetchPromotions = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/home/api/promotions/');
+        setPromotions(response.data);
+      } catch (error) {
+        console.error('Error fetching promotions:', error);
+      }
+    };
 
-            {/* Featured Products Section */}
-            <section className="featured-products-section">
-                <h2 className="section-title">Featured Products</h2>
-                <div className="featured-products-slider">
-                    <button className="slider-button left" onClick={handleSlideLeft}>
-                        <i className="fas fa-chevron-left"></i>
-                    </button>
-                    <div className="feature-products-container">
-                        <div className="feature-products-inner"
-                            style={{ transform: `translateX(-${slideIndex * 300}px)` }}>
-                            {featuredProducts.map((product) => (
-                                <FeatureProduct key={product.id} product={product} />
-                            ))}
-                        </div>
-                    </div>
-                    <button className="slider-button right" onClick={handleSlideRight}>
-                        <i className="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </section>
+    const fetchMostWishedProduct = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/most-wished-product/');
+        setMostWishedProduct(response.data);
+      } catch (error) {
+        console.error('Error fetching most wished product:', error);
+      }
+    };
 
-            {/* Categories Section */}
-            <section className="categories-section">
-                <h2 className="section-title">Shop by Category</h2>
-                <div className="categories-grid">
-                    {categories.map(category => (
-                        <div key={category.id} className="category-card">
-                            <img src={category.image} alt={category.name} className="category-image" />
-                            <h3 className="category-name">{category.name}</h3>
-                            <p className="category-description">{category.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
+    const fetchRecommendations = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/recommendations/');
+        setRecommendations(response.data);
+      } catch (error) {
+        console.error('Error fetching recommendations:', error);
+      }
+    };
 
-            {/* About Us Section */}
-            <section className="about-us-section">
-                <h2 className="section-title">About Us</h2>
-                <div className="about-us-content">
-                    <p>
-                        Welcome to Kultura, your destination for unique and handcrafted goods.
-                        We are passionate about bringing you the best products from talented artisans around the world.
-                    </p>
-                    <p>
-                        Our mission is to support independent creators and provide you with high-quality,
-                        ethically sourced items that you'll love for years to come.
-                    </p>
-                </div>
-            </section>
+    fetchCategories();
+    fetchFeaturedProducts();
+    fetchPromotions();
+    fetchMostWishedProduct();
+    fetchRecommendations();
+  }, []);
 
-            {/* Call to Action Section */}
-            <section className="cta-section">
-                <h2 className="section-title">Ready to Explore?</h2>
-                <p>Browse our latest collections and discover something special today!</p>
-                <button className="cta-button">Shop Now</button>
-            </section>
+  return (
+    <div className="home-page">
+      <HeroSection />
+      <Categories categories={categories} />
+      <FeaturedProducts products={featuredProducts} />
 
-    
-        </div>
-    );
+  
+      <Recommendations products={recommendations} />
+    </div>
+  );
 };
 
 export default Home;

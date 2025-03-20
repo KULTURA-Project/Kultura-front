@@ -1,55 +1,45 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import './HeroSection.css'; // Import CSS file
+import React, { useEffect, useState } from 'react';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import './HeroSection.css';
 
 const HeroSection = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const slides = [
-        {
-            id: 1,
-            title: 'Discover Unique Handcrafted Items',
-            description: 'Explore our curated collection of artisan-made goods and support independent creators.',
-            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
-        },
-        {
-            id: 2,
-            title: 'Elevate Your Home Decor',
-            description: 'Find the perfect pieces to add character and style to your living space.',
-            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
-        },
-        {
-            id: 3,
-            title: 'Support Ethical and Sustainable Practices',
-            description: 'Shop with confidence knowing that our products are ethically sourced and environmentally friendly.',
-            image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Famazing-pictures&psig=AOvVaw1ZAwJM55KdjlN9D3ZcI5Lm&ust=1742344223314000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj8rJewkowDFQAAAAAdAAAAABAE', // Replace with your image URL
-        },
-    ];
-
-    // Use useCallback to memoize nextSlide
-    const nextSlide = useCallback(() => {
-        setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
-    }, [slides.length]); // Only recreate nextSlide if slides.length changes
+    const [promotion, setPromotion] = useState(null);
 
     useEffect(() => {
-        const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        const fetchPromotion = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/home/api/promotions/hero/'); // Fetch all promotions
+                if (!response.ok) {
+                    throw new Error('Could not fetch promotions');
+                }
+                const data = await response.json();
+                setPromotion(data);
+            } catch (error) {
+                console.error('Error fetching promotions:', error);
+            }
+        };
 
-        return () => clearInterval(interval); // Clear interval on unmount
-    }, [nextSlide]); // Add nextSlide as a dependency
+        fetchPromotion();
+    }, []);
+
+    if (!promotion) {
+        return <div className="no-promotions">No promotions available.</div>;
+    }
 
     return (
-        <div className="hero-carousel">
-            <div className="carousel-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                {slides.map((slide) => (
-                    <div key={slide.id} className="carousel-slide">
-                        <img src={slide.image} alt={slide.title} className="slide-image" />
-                        <div className="slide-content">
-                            <h2>{slide.title}</h2>
-                            <p>{slide.description}</p>
-                            <button className="cta-button">Shop Now</button>
-                        </div>
-                    </div>
-                ))}
+        <section className="hero">
+            <div
+                className="hero-slide"
+                style={{ backgroundImage: `url(${promotion.image})` }}
+            >
+                <div className="hero-content">
+                    <h1>{promotion.name}</h1>
+                    <p>{promotion.description}</p>
+                    <a href={promotion.link} className="cta-button">Shop Now</a>
+                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

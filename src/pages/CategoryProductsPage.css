@@ -1,6 +1,6 @@
 .category-products-page {
   display: flex;
-  max-width: 1500px; /* Increased the max-width */
+   /* Increased the max-width */
   margin: 0 auto;
   padding: 20px;
   gap: 20px;

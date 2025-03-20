@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ProductDetail from "./components/ProductDetail";
@@ -11,12 +12,12 @@ import CategoryProductsPage from "./pages/CategoryProductsPage";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import LoginPage from './pages/LoginPage';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import OrdersPage from "./pages/OrdersPage";
 import { default as Logout, default as ProfilePage } from "./pages/ProfilePage";
 import RegisterPage from './pages/RegisterPage';
 import ShopPage from "./pages/ShopPage";
 import WishlistPage from "./pages/WishlistPage";
-
 function App() {
     return (
         <Router>
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/wishlist" element={<WishlistPage />} />
                         <Route path="/orders" element={<OrdersPage />} />
+                        <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
                         <Route path="/cart" element={<CartPage />} />
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/login" element={<LoginPage />} />
