@@ -1,22 +1,114 @@
 import { faCheck, faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./ProductCard.css";
 
 const ProductCard = ({ product, onSelect, isSelected }) => {
     const [isWishlisted, setIsWishlisted] = useState(false);
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
 
-    const handleAddToWishlist = (e) => {
+    // Check if product is already in wishlist or cart on mount
+    useEffect(() => {
+        const checkProductStatus = async () => {
+            try {
+                const wishlistResponse = await axios.get('http://127.0.0.1:8000/orders/check-wishlist/', {
+                    headers: {
+                        Authorization: `Token ${localStorage.getItem('token')}`,
+                    },
+                    params: {
+                        product_id: product.id,
+                    },
+                });
+                setIsWishlisted(wishlistResponse.data.is_in_wishlist);
+
+                const cartResponse = await axios.get('http://127.0.0.1:8000/orders/check-cart/', {
+                    headers: {
+                        Authorization: `Token ${localStorage.getItem('token')}`,
+                    },
+                    params: {
+                        product_id: product.id,
+                    },
+                });
+                setIsAddedToCart(cartResponse.data.is_in_cart);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        checkProductStatus();
+    }, [product.id]);
+
+    const handleAddToWishlist = async (e) => {
         e.preventDefault();
-        setIsWishlisted(!isWishlisted);
-        console.log(`Add to wishlist: ${product.name}`);
+        e.stopPropagation();
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/orders/add-to-wishlist/', {
+                product_id: product.id,
+            }, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            });
+            console.log(response.data);
+            setIsWishlisted(true);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-    const handleAddToCart = (e) => {
+    const handleRemoveFromWishlist = async (e) => {
         e.preventDefault();
-        console.log(`Add to cart: ${product.name}`);
-        // Implement your add to cart logic here (e.g., dispatch an action to Redux, update local storage, etc.)
+        e.stopPropagation();
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/orders/remove-from-wishlist/', {
+                product_id: product.id,
+            }, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            });
+            console.log(response.data);
+            setIsWishlisted(false);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleAddToCart = async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/orders/add-to-cart/', {
+                product_id: product.id,
+            }, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            });
+            console.log(response.data);
+            setIsAddedToCart(true);
+        } catch (error) {
+            console.error(error.response.data);
+        }
+    };
+
+    const handleRemoveFromCart = async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/orders/remove-from-cart/', {
+                product_id: product.id,
+            }, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            });
+            console.log(response.data);
+            setIsAddedToCart(false);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     // Get the first image URL (if available)
@@ -37,8 +129,9 @@ const ProductCard = ({ product, onSelect, isSelected }) => {
                     )}
                 </Link>
                 <div className="wishlist-icon" onClick={(e) => {
+                    e.preventDefault();
                     e.stopPropagation();
-                    handleAddToWishlist(e);
+                    isWishlisted ? handleRemoveFromWishlist(e) : handleAddToWishlist(e);
                 }}>
                     <FontAwesomeIcon icon={faHeart} style={{ color: isWishlisted ? 'red' : 'inherit' }} />
                 </div>
@@ -54,10 +147,11 @@ const ProductCard = ({ product, onSelect, isSelected }) => {
                 </div>
                 <div className="product-actions">
                     <button className="add-to-cart-button" onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
-                        handleAddToCart(e);
+                        isAddedToCart ? handleRemoveFromCart(e) : handleAddToCart(e);
                     }}>
-                        <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart
+                        <FontAwesomeIcon icon={faShoppingCart} /> {isAddedToCart ? 'Remove from Cart' : 'Add to Cart'}
                     </button>
                     {isSelected && <FontAwesomeIcon icon={faCheck} className="selected-icon" />}
                 </div>

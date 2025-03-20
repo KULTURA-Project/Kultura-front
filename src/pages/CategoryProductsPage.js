@@ -13,7 +13,7 @@ const CategoryProductsPage = () => {
     const [selectedVariants, setSelectedVariants] = useState({});
     const [specifications, setSpecifications] = useState({});
     const [selectedSpecifications, setSelectedSpecifications] = useState({});
-    const [priceRange, setPriceRange] = useState([0, 1000]); // Initial price range
+    const [priceRange, setPriceRange] = useState([0, 10000]); // Initial price range
 
     useEffect(() => {
         const fetchCategoryName = async () => {
@@ -154,7 +154,7 @@ const CategoryProductsPage = () => {
                     <input
                         type="range"
                         min="0"
-                        max="1000"
+                        max="10000"
                         value={priceRange[1]}
                         onChange={handlePriceRangeChange}
                     />

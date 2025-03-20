@@ -6,13 +6,13 @@ import Header from "./components/Header";
 import ProductDetail from "./components/ProductDetail";
 import ProductPage from "./components/ProductPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import CartPage from "./pages/CartPage";
 import CategoryProductsPage from "./pages/CategoryProductsPage";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import LoginPage from './pages/LoginPage';
-import LogoutPage from './pages/LogoutPage';
 import OrdersPage from "./pages/OrdersPage";
-import ProfilePage from "./pages/ProfilePage";
+import { default as Logout, default as ProfilePage } from "./pages/ProfilePage";
 import RegisterPage from './pages/RegisterPage';
 import ShopPage from "./pages/ShopPage";
 import WishlistPage from "./pages/WishlistPage";
@@ -27,14 +27,15 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/shop" element={<ShopPage />} />
                         <Route path="/about" element={<AboutUsPage />} />
-                        <Route path="/account" element={<ProfilePage />} />
+                        <Route path="/profile" element={<ProfilePage />} />
                         <Route path="/orders" element={<OrdersPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/wishlist" element={<WishlistPage />} />
                         <Route path="/orders" element={<OrdersPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/logout" element={<LogoutPage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/logout" element={<Logout />} />
                         <Route path="/category-products/:category_id" element={<CategoryProductsPage />} />
                         <Route path="/products/:slug" element={<ProductPage />} />
                         <Route path="/products/:id" element={<ProductDetail />} />

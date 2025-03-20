@@ -93,7 +93,7 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background: #e74c3c;
+  background: #adb905;
   color: #fff;
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
@@ -153,8 +153,11 @@
   display: flex;
   gap: 1rem;
 }
-
+.categories-slider::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari, Edge */
+}
 .category-item {
+  display: inline-block; /* Ensures the element only takes as much space as needed */
   padding: 0.5rem 1rem;
   background: #fff;
   border: 1px solid #ddd;
@@ -162,15 +165,17 @@
   color: #333;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
 }
 
+
 .category-item:hover {
-  background: #e74c3c;
+  background: #adb905;
   color: #fff;
 }
 
 .category-item.active {
-  background: #e74c3c;
+  background: #adb905;
   color: #fff;
 }
 
