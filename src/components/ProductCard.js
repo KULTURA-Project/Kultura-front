@@ -53,8 +53,7 @@ const ProductCard = ({ product }) => {
   };
 
   // Get the first image URL (if available)
-  const imageURL = product.images && product.images.length > 0 ? product.images[0].image : null;
-
+  const imageURL = product.images && product.images.length > 0 ? `http://127.0.0.1:8000${product.images[0].image}` : null;
   return (
     <div className="product-card">
       <div className="image-container">

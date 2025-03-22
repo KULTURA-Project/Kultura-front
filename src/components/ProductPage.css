@@ -1,9 +1,7 @@
-/* ProductPage.css */
-
 .product-detail-page {
     display: flex;
     flex-direction: column;
-    max-width: 1000px;
+    max-width: 1200px; /* Increased from 1000px */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -13,6 +11,7 @@
 .image-info-container {
     display: flex; /* Flex container for image and info */
     width: 100%;
+    gap: 30px; /* Added gap between image and info */
 }
 
 .product-image-section {
@@ -29,8 +28,8 @@
 }
 
 .thumbnail {
-    width: 70px;
-    height: 70px;
+    width: 80px; /* Slightly larger thumbnails */
+    height: 80px;
     border-radius: 5px;
     margin-right: 10px;
     cursor: pointer;
@@ -59,7 +58,7 @@
 }
 
 .product-title {
-    font-size: 24px;
+    font-size: 28px; /* Larger title */
     margin-bottom: 0;
     flex-grow: 1;
 }
@@ -69,11 +68,11 @@
     border: none;
     color: #555;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 24px; /* Larger icon */
 }
 
 .product-price {
-    font-size: 24px;
+    font-size: 28px; /* Larger price */
     color: #333;
     margin-bottom: 20px;
 }
@@ -112,7 +111,7 @@
 }
 
 .similar-products h2 {
-    font-size: 20px;
+    font-size: 24px; /* Larger heading */
     margin-bottom: 15px;
 }
 
@@ -120,15 +119,22 @@
     display: flex;
     overflow-x: auto;
     padding-bottom: 15px;
+    gap: 20px; /* Added gap between cards */
 }
 
 .similar-product-card {
-    width: 200px;
+    width: 220px; /* Wider cards */
     margin-right: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.similar-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .similar-product-card img {
@@ -140,6 +146,7 @@
 
 .similar-product-card p {
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 /* Quantity Selector Styles */
@@ -169,7 +176,7 @@
 }
 
 .quantity-controls input {
-    width: 50px;
+    width: 60px; /* Wider input */
     text-align: center;
     padding: 5px;
     border: 1px solid #ddd;
@@ -189,47 +196,3 @@
     margin-top: 10px;
     width: 100%;
 }
-
-
-
-.similar-products {
-    margin-top: 30px;
-  }
-  
-  .similar-products h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .similar-products-list {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 15px;
-  }
-  
-  .similar-product-card {
-    width: 200px;
-    margin-right: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.3s ease; /* Add transition for smooth effect */
-  }
-  
-  .similar-product-card:hover {
-    transform: translateY(-5px); /* Lift the card slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  }
-  
-  .similar-product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .similar-product-card p {
-    margin-bottom: 5px;
-    font-weight: bold; /* Make product name bold */
-  }

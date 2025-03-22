@@ -25,15 +25,25 @@
 
 .image-container {
   position: relative;
-  height: 80%; /* Image takes 60% of the height */
+  width: 100%;
+  height: 240px; /* Adjust to fit your design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
+
 
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  object-fit: cover; /* Ensures the image fills the entire container without distortion */
+}
+
+.image-container, .product-image {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .product-image:hover {
@@ -75,17 +85,16 @@
   justify-content: space-between;
 }
 
-.product-name {
-  font-size: 14px; /* Reduced font size */
-  font-weight: bold;
-  color: #333;
-  margin-bottom: px;
+.product-image {
+  display: block;
 }
+
 
 .product-category {
   font-size: 12px; /* Reduced font size */
   color: #777;
   margin-bottom: 1px;
+  text-decoration: none;
 }
 
 .product-price {
