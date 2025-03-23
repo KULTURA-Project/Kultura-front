@@ -1,16 +1,18 @@
+import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import ProductCard from '../components/ProductCard'; // Import the ProductCard component
+import { Link, useParams } from 'react-router-dom';
 import './ProductPage.css';
 
 const ProductPage = () => {
   const { slug } = useParams();
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1); // Quantity selector
-  const [activeTab, setActiveTab] = useState('specifications'); // Active tab state
-  const [similarProducts, setSimilarProducts] = useState([]); // Similar products
-  const [addToCartLoading, setAddToCartLoading] = useState(false); // Add to cart loading state
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('specifications');
+  const [similarProducts, setSimilarProducts] = useState([]);
+  const [addToCartLoading, setAddToCartLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0); // Track the selected image index
 
   // Fetch product details
   useEffect(() => {
@@ -18,6 +20,7 @@ const ProductPage = () => {
       try {
         const response = await axios.get(`http://127.0.0.1:8000/api/product-page/${slug}/`);
         setProduct(response.data);
+        setSelectedImage(0); // Reset to the first image when product changes
       } catch (error) {
         console.error('Error fetching product:', error);
       }
@@ -33,7 +36,6 @@ const ProductPage = () => {
         const categoryId = product.category?.id;
         if (categoryId) {
           const response = await axios.get(`http://127.0.0.1:8000/api/products/?category=${categoryId}`);
-          console.log(response.data); // Log the response to verify
           setSimilarProducts(response.data.slice(0, 3));
         }
       } catch (error) {
@@ -45,6 +47,11 @@ const ProductPage = () => {
       fetchSimilarProducts();
     }
   }, [product.category?.id]);
+
+  // Handle image selection (swap main image with thumbnail)
+  const handleImageSelect = (index) => {
+    setSelectedImage(index);
+  };
 
   // Handle quantity changes
   const handleQuantityChange = (event) => {
@@ -68,19 +75,39 @@ const ProductPage = () => {
   const handleAddToCart = async () => {
     setAddToCartLoading(true);
     try {
-      await axios.post('http://127.0.0.1:8000/orders/cart/add/', {
-        product_id: product.id,
-        quantity: quantity,
-      }, {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`,
+      await axios.post(
+        'http://127.0.0.1:8000/orders/cart/add/',
+        {
+          product_id: product.id,
+          quantity: quantity,
         },
-      });
-      alert('Product added to cart!');
+        {
+          headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`,
+          },
+        }
+      );
     } catch (error) {
       console.error('Error adding to cart:', error);
     } finally {
       setAddToCartLoading(false);
+    }
+  };
+
+  // Add product to wishlist
+  const handleAddToWishlist = async (productId) => {
+    try {
+      await axios.post(
+        'http://127.0.0.1:8000/orders/wishlist/add/',
+        { product_id: productId },
+        {
+          headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error('Error adding to wishlist:', error);
     }
   };
 
@@ -90,13 +117,15 @@ const ProductPage = () => {
       case 'specifications':
         return product.specifications ? (
           <ul className="specifications-list">
-            {product.specifications.map(spec => (
+            {product.specifications.map((spec) => (
               <li key={spec.id}>
                 <strong>{spec.name}:</strong> {spec.value}
               </li>
             ))}
           </ul>
-        ) : <p>No specifications available.</p>;
+        ) : (
+          <p>No specifications available.</p>
+        );
       case 'history':
         return <p>{product.history || 'No history available.'}</p>;
       case 'reviews':
@@ -110,15 +139,45 @@ const ProductPage = () => {
     <div className="product-detail-page">
       {/* Product Image and Info Section */}
       <div className="image-info-container">
+        {/* Image Gallery */}
         <div className="product-image-section">
-          <img src={product.images?.[0]?.image} alt={product.name} className="product-image" />
+          {/* Main Image */}
+          <div className="main-image-container">
+            <img
+              src={product.images?.[selectedImage]?.image}
+              alt={product.name}
+              className="main-image"
+            />
+          </div>
+
+          {/* Thumbnails */}
+          <div className="thumbnail-gallery">
+            {product.images?.map((image, index) => (
+              <div
+                key={index}
+                className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
+                onClick={() => handleImageSelect(index)}
+              >
+                <img
+                  src={image.image}
+                  alt={`Thumbnail ${index + 1}`}
+                  className="thumbnail-image"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
+        {/* Product Info */}
         <div className="product-info-section">
           <h1 className="product-title">{product.name}</h1>
           <p className="product-price">CFA {new Intl.NumberFormat('en-US').format(product.price)}</p>
-          <p><strong>Category:</strong> {product.category?.name}</p>
-          <p><strong>Type:</strong> {product.product_type?.name}</p>
+          <p>
+            <strong>Category:</strong> {product.category?.name}
+          </p>
+          <p>
+            <strong>Type:</strong> {product.product_type?.name}
+          </p>
 
           {/* Quantity Selector */}
           <div className="quantity-selector">
@@ -176,14 +235,42 @@ const ProductPage = () => {
       <div className="similar-products">
         <h2>Similar Products</h2>
         <div className="similar-products-list">
-          {similarProducts.map(similarProduct => (
-            <ProductCard
-              key={similarProduct.id}
-              product={{
-                ...similarProduct,
-                images: similarProduct.images?.length ? similarProduct.images : [{ image: 'https://via.placeholder.com/200' }], // Fallback image
-              }}
-            />
+          {similarProducts.map((similarProduct) => (
+            <div key={similarProduct.id} className="similar-product-card">
+              <div className="image-container">
+                <Link to={`/products/${similarProduct.slug}`} className="product-link">
+                  {similarProduct.images?.[0]?.image ? (
+                    <img
+                      src={similarProduct.images[0].image}
+                      alt={similarProduct.name}
+                      className="product-image"
+                    />
+                  ) : (
+                    <div className="no-image">No Image Available</div>
+                  )}
+                </Link>
+                <div
+                  className="wishlist-icon"
+                  onClick={() => handleAddToWishlist(similarProduct.id)}
+                >
+                  <FontAwesomeIcon icon={faHeart} />
+                </div>
+              </div>
+
+              <div className="product-info">
+                <Link to={`/products/${similarProduct.slug}`} className="product-link">
+                  <h3 className="product-name">{similarProduct.name}</h3>
+                  <p className="product-category">{similarProduct.category?.name}</p>
+                </Link>
+                <div className="product-price">CFA {new Intl.NumberFormat('en-US').format(similarProduct.price)}</div>
+                <button
+                  className="add-to-cart-button"
+                  onClick={() => handleAddToCart(similarProduct.id)}
+                >
+                  <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>

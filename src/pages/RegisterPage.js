@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import './RegisterPage.css'; // Import CSS file
+import { Link } from 'react-router-dom'; // Import Link for breadcrumbs
+import './RegisterPage.css';
 
 function RegisterPage() {
     const [email, setEmail] = useState('');
@@ -29,7 +30,14 @@ function RegisterPage() {
 
     return (
         <div className="register-container">
-            <h1 className="register-title">Register</h1>
+            {/* Breadcrumbs */}
+            <div className="breadcrumbs">
+                <Link to="/">Home</Link>
+                <span> &gt; </span>
+                <span>Register</span>
+            </div>
+
+            <h1 className="register-title">Create Your Account</h1>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit} className="register-form">
                 <div className="form-group">
@@ -86,6 +94,9 @@ function RegisterPage() {
 
                 <button type="submit" className="submit-button">Register</button>
             </form>
+            <p className="login-link">
+                Already have an account? <Link to="/login">Login here</Link>
+            </p>
         </div>
     );
 }

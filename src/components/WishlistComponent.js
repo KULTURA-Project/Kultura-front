@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaCheck, FaShoppingCart, FaTrash } from 'react-icons/fa'; // Import the icons
+import { FaCheck, FaShoppingCart, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import "./WishlistPage.css";
+import './WishlistComponent.css';
 
-const WishlistPage = () => {
+const WishlistComponent = () => {
     const [wishlistItems, setWishlistItems] = useState([]);
-    const [error, setError] = useState(null);
     const [addedToCart, setAddedToCart] = useState({});
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchWishlistItems = async () => {
@@ -17,7 +17,6 @@ const WishlistPage = () => {
                         Authorization: `Token ${localStorage.getItem('token')}`,
                     },
                 });
-                console.log(response.data); // Log the response to verify
                 setWishlistItems(response.data);
             } catch (error) {
                 console.error(error);
@@ -58,14 +57,7 @@ const WishlistPage = () => {
     };
 
     return (
-        <div className="wishlist-page">
-            {/* Breadcrumbs */}
-            <div className="breadcrumbs">
-                <Link to="/">Home</Link>
-                <span> &gt; </span>
-                <span>Wishlist</span>
-            </div>
-
+        <div className="wishlist-component">
             <h2>Wishlist</h2>
             {error && <div className="error-message">{error}</div>}
             {wishlistItems.length === 0 ? (
@@ -74,8 +66,8 @@ const WishlistPage = () => {
                 <table className="wishlist-table">
                     <thead>
                         <tr>
-                            <th>Product Image</th>
-                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Name</th>
                             <th>Category</th>
                             <th>Type</th>
                             <th>Price</th>
@@ -84,7 +76,7 @@ const WishlistPage = () => {
                     </thead>
                     <tbody>
                         {wishlistItems.map((item) => {
-                            const imageURL = item.images && item.images.length > 0 
+                            const imageURL = item.images && item.images.length > 0
                                 ? `http://127.0.0.1:8000${item.images[0].image}` // Construct full image URL
                                 : 'https://via.placeholder.com/150'; // Fallback image
                             return (
@@ -133,4 +125,4 @@ const WishlistPage = () => {
     );
 };
 
-export default WishlistPage;
+export default WishlistComponent;

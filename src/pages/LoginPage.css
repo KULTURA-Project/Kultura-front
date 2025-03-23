@@ -1,60 +1,133 @@
+/* General Styles */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.breadcrumbs {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumbs a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
 }
 
 .login-title {
-    font-size: 36px;
+    font-size: 24px;
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
 }
 
 .error-message {
-    color: red;
-    margin-bottom: 10px;
+    color: #dc3545;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 15px;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .form-label {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
 }
 
 .form-input {
-    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #007bff;
 }
 
 .submit-button {
-    padding: 10px 20px;
+    padding: 12px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
     background-color: #0056b3;
+}
+
+/* Additional Links */
+.additional-links {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.forgot-password-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+.register-link {
+    margin-top: 10px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+
+    .form-input {
+        font-size: 12px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+    }
 }

@@ -87,7 +87,7 @@ const Header = () => {
 
                 {/* Navigation Links */}
                 <div className="nav-links">
-                    <Link to="/shop">Shop</Link>
+                 
                     <Link to="/about">About Us</Link>
                     <Link to="/contact">Contact</Link>
                     {isLoggedIn && (

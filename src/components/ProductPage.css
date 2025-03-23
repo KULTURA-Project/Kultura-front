@@ -1,198 +1,438 @@
+/* General Styles */
 .product-detail-page {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px; /* Increased from 1000px */
-    margin: 20px auto;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.image-info-container {
-    display: flex; /* Flex container for image and info */
-    width: 100%;
-    gap: 30px; /* Added gap between image and info */
-}
-
-.product-image-section {
-    width: 50%; /* Adjust width */
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Image and Info Container */
+  .image-info-container {
     display: flex;
-    flex-direction: column;
-}
-
-.thumbnails {
-    display: flex;
-    overflow-x: auto;
-    margin-bottom: 10px;
-}
-
-.thumbnail {
-    width: 80px; /* Slightly larger thumbnails */
-    height: 80px;
-    border-radius: 5px;
-    margin-right: 10px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-}
-
-.product-image {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .product-image-section {
+    flex: 1;
+  }
+  
+  .product-image {
     width: 100%;
+    max-width: 500px;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.product-info-section {
-    width: 50%; /* Adjust width */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.product-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.product-title {
-    font-size: 28px; /* Larger title */
-    margin-bottom: 0;
-    flex-grow: 1;
-}
-
-.wishlist-button {
-    background-color: transparent;
-    border: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 24px; /* Larger icon */
-}
-
-.product-price {
-    font-size: 28px; /* Larger price */
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Tabs and Tab Content */
-.product-tabs {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    border-bottom: 2px solid #ddd;
-}
-
-.product-tabs button {
-    background-color: transparent;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    color: #777;
-}
-
-.product-tabs button.active {
-    border-bottom: 3px solid #a38600;
-    color: #a38600;
-}
-
-.tab-content {
-    padding: 20px;
-    margin-top: 10px;
-}
-
-/* Similar Products */
-.similar-products {
-    margin-top: 30px;
-}
-
-.similar-products h2 {
-    font-size: 24px; /* Larger heading */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-info-section {
+    flex: 1;
+  }
+  
+  .product-title {
+    font-size: 32px;
     margin-bottom: 15px;
-}
-
-.similar-products-list {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 15px;
-    gap: 20px; /* Added gap between cards */
-}
-
-.similar-product-card {
-    width: 220px; /* Wider cards */
-    margin-right: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-}
-
-.similar-product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.similar-product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.similar-product-card p {
-    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .product-price {
+    font-size: 24px;
     font-weight: bold;
-}
-
-/* Quantity Selector Styles */
-.quantity-selector {
-    display: flex;
-    align-items: center;
+    color: #007bff;
     margin-bottom: 20px;
-}
-
-.quantity-selector label {
+  }
+  
+  .product-info-section p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Quantity Selector */
+  .quantity-selector {
+    margin-bottom: 20px;
+  }
+  
+  .quantity-selector label {
+    font-size: 16px;
+    color: #333;
     margin-right: 10px;
-    font-weight: bold;
-}
-
-.quantity-controls {
+  }
+  
+  .quantity-controls {
     display: flex;
     align-items: center;
-}
-
-.quantity-controls button {
+    gap: 10px;
+  }
+  
+  .quantity-controls button {
     padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
     border-radius: 5px;
-    font-weight: bold;
-}
-
-.quantity-controls input {
-    width: 60px; /* Wider input */
-    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .quantity-controls button:hover {
+    background-color: #0056b3;
+  }
+  
+  .quantity-controls input {
+    width: 50px;
     padding: 5px;
+    text-align: center;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-/* Add to Cart Button Styles */
-.add-to-cart-button {
-    background-color: #a38600;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
+  }
+  
+  /* Add to Cart Button */
+  .add-to-cart-button {
     width: 100%;
-}
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-to-cart-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Tabs Container */
+  .product-tabs {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+  }
+  
+  /* Tab Buttons */
+  .product-tabs button {
+    flex: 1;
+    padding: 15px 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .product-tabs button:hover {
+    color: #007bff;
+  }
+  
+  /* Active Tab */
+  .product-tabs button.active {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Active Line */
+  .active-line {
+    position: absolute;
+    bottom: -2px;
+    height: 2px;
+    width: 33.33%;
+    background-color: #007bff;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  /* Tab Content */
+  .tab-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 40px;
+  }
+  
+  .specifications-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .specifications-list li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Similar Products Section */
+  .similar-products {
+    margin-bottom: 40px;
+  }
+  
+  .similar-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .similar-products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Similar Products Section */
+.similar-products {
+    margin-bottom: 40px;
+  }
+  
+  .similar-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .similar-products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+  
+  /* Product Card */
+  .product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin: 10px;
+    width: 300px; /* Increased width */
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Keeps the height fixed */
+    box-shadow: none; /* No shadow */
+    border: none; /* No border */
+    position: relative; /* Needed for positioning the button correctly */
+  }
+  
+  .product-card:hover {
+    transform: none; /* No hover effect on card */
+    box-shadow: none; /* No shadow on hover */
+  }
+  
+  .selected {
+    background-color: #f8f8f8; /* Subtle background change on selection */
+  }
+  
+  /* Image Container */
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 240px; /* Adjust to fit your design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the entire container without distortion */
+  }
+  
+  .image-container,
+  .product-image {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  
+  .product-image:hover {
+    transform: scale(1.1);
+  }
+  
+  .no-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #888;
+    height: 100%;
+    font-size: 14px;
+  }
+  
+  /* Wishlist Icon */
+  .wishlist-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .wishlist-icon:hover {
+    background-color: #f8f8f8;
+  }
+  
+  /* Product Info */
+  .product-info {
+    padding: 10px 15px;
+    text-align: left; /* Align text to the left */
+    height: 40%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .product-category {
+    font-size: 12px; /* Reduced font size */
+    color: #777;
+    margin-bottom: 1px;
+    text-decoration: none;
+  }
+  
+  .product-price {
+    font-size: 16px; /* Reduced font size */
+    font-weight: bold;
+    color: #e74c3c;
+    margin-left: auto; /* Align price to the right */
+  }
+  
+  /* Product Actions (Add to Cart Button) */
+  .product-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    visibility: hidden; /* Hide actions by default */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .product-card:hover .product-actions {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .add-to-cart-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #27ae60;
+  }
+  
+  .add-to-cart-button svg {
+    margin-right: 8px;
+  }
+  
+  /* Selected Icon */
+  .selected-icon {
+    color: #ffd700;
+    font-size: 18px;
+  }
+  
+  /* Add to Cart Button in Card */
+  .similar-product-card .add-to-cart-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .similar-product-card .add-to-cart-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Image Gallery */
+.product-image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .main-image-container {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .thumbnail-gallery {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .thumbnail.active {
+    border-color: #007bff;
+  }
+  
+  .thumbnail:hover {
+    border-color: #007bff;
+  }
+  
+  .thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css'; // Import CSS file
+import { Link, useNavigate } from 'react-router-dom'; // Import Link for breadcrumbs and navigation
+import './LoginPage.css';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -21,13 +21,20 @@ function LoginPage() {
             navigate('/profile'); // Navigate to profile after login
         } catch (error) {
             console.error(error);
-            setError('Invalid credentials');
+            setError('Invalid credentials. Please try again.');
         }
     };
 
     return (
         <div className="login-container">
-            <h1 className="login-title">Login</h1>
+            {/* Breadcrumbs */}
+            <div className="breadcrumbs">
+                <Link to="/">Home</Link>
+                <span> &gt; </span>
+                <span>Login</span>
+            </div>
+
+            <h1 className="login-title">Welcome Back</h1>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="form-group">
@@ -58,6 +65,16 @@ function LoginPage() {
 
                 <button type="submit" className="submit-button">Login</button>
             </form>
+
+            {/* Additional Links */}
+            <div className="additional-links">
+                <Link to="/forgot-password" className="forgot-password-link">
+                    Forgot Password?
+                </Link>
+                <p className="register-link">
+                    Don't have an account? <Link to="/register">Register here</Link>
+                </p>
+            </div>
         </div>
     );
 }

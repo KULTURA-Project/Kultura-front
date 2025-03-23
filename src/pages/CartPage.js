@@ -80,76 +80,79 @@ const CartPage = () => {
             ) : (
                 <div>
                     <table className="cart-table">
-                        <thead>
-                            <tr>
-                                <th>Product Image</th>
-                                <th>Product Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Total</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cartItems.map((item) => (
-                                <tr key={item.id}>
-                                    <td>
-                                        {/* Wrap the product image in a Link */}
-                                        <Link to={`/products/${item.product.slug}`}>
-                                            {item.product.images && item.product.images.length > 0 ? (
-                                                <img
-                                                    src={item.product.images[0].image}
-                                                    alt={item.product.name}
-                                                    className="product-image"
-                                                />
-                                            ) : (
-                                                <div className="no-image">No Image Available</div>
-                                            )}
-                                        </Link>
-                                    </td>
-                                    <td>{item.product.name}</td>
-                                    <td>
-                                        <div className="quantity-controls">
-                                            <button
-                                                className="quantity-button"
-                                                onClick={() =>
-                                                    handleQuantityChange(item.id, quantities[item.id] - 1)
-                                                }
-                                            >
-                                                -
-                                            </button>
-                                            <input
-                                                type="number"
-                                                value={quantities[item.id]}
-                                                onChange={(e) =>
-                                                    handleQuantityChange(item.id, parseInt(e.target.value))
-                                                }
-                                                min="1"
-                                            />
-                                            <button
-                                                className="quantity-button"
-                                                onClick={() =>
-                                                    handleQuantityChange(item.id, quantities[item.id] + 1)
-                                                }
-                                            >
-                                                +
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td>${item.product.price}</td>
-                                    <td>${(item.product.price * quantities[item.id]).toFixed(2)}</td>
-                                    <td>
-                                        {/* Replace "Remove from Cart" with a cross */}
-                                        <button
-                                            className="remove-from-cart-button"
-                                            onClick={() => handleRemoveFromCart(item.id)}
-                                        >
-                                            &times;
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
+                    <thead>
+  <tr>
+    <th>Product Image</th>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Type</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  {cartItems.map((item) => (
+    <tr key={item.id}>
+      <td>
+        <Link to={`/products/${item.product.slug}`}>
+          {item.product.images && item.product.images.length > 0 ? (
+            <img
+              src={`http://127.0.0.1:8000${item.product.images[0].image}`} // Construct full image URL
+              alt={item.product.name}
+              className="product-image"
+            />
+          ) : (
+            <div className="no-image">No Image Available</div>
+          )}
+        </Link>
+      </td>
+      <td>{item.product.name}</td>
+      <td>{item.product.category?.name || "N/A"}</td> {/* Display category */}
+      <td>{item.product.product_type?.name || "N/A"}</td> {/* Display product type */}
+      <td>
+        <div className="quantity-controls">
+          <button
+            className="quantity-button"
+            onClick={() =>
+              handleQuantityChange(item.id, quantities[item.id] - 1)
+            }
+          >
+            -
+          </button>
+          <input
+            type="number"
+            value={quantities[item.id]}
+            onChange={(e) =>
+              handleQuantityChange(item.id, parseInt(e.target.value))
+            }
+            min="1"
+          />
+          <button
+            className="quantity-button"
+            onClick={() =>
+              handleQuantityChange(item.id, quantities[item.id] + 1)
+            }
+          >
+            +
+          </button>
+        </div>
+      </td>
+      <td>${item.product.price}</td>
+      <td>${(item.product.price * quantities[item.id]).toFixed(2)}</td>
+      <td>
+        <button
+          className="remove-from-cart-button"
+          onClick={() => handleRemoveFromCart(item.id)}
+        >
+          &times;
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
                     </table>
                     <div className="total-price">
                         Total: ${calculateTotal().toFixed(2)}
