@@ -1,0 +1,17 @@
+.order-confirmation-page {
+    padding: 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+    margin-right: 5px;
+}
+
+.order-details p,
+.order-details ul li {
+    margin-bottom: 10px;
+}
+
+.order-details h3 {
+    margin-top: 20px;
+}
