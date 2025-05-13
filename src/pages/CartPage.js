@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 import "./CartPage.css";
 const CartPage = () => {
+  const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([]);
     const [error, setError] = useState(null);
     const [quantities, setQuantities] = useState({});
@@ -158,11 +160,12 @@ const CartPage = () => {
                         Total: ${calculateTotal().toFixed(2)}
                     </div>
                     <button
-                        className="complete-order-button"
-                        onClick={() => console.log("Complete Order")}
-                    >
-                        Complete Order
-                    </button>
+        className="complete-order-button"
+        onClick={() => navigate('/checkout')}
+        disabled={cartItems.length === 0}
+      >
+        Proceed to Checkout
+      </button>
                 </div>
             )}
         </div>
