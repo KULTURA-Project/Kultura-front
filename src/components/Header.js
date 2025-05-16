@@ -76,7 +76,8 @@ const Header = () => {
 
                 {/* Logo */}
                 <Link to="/" className="logo">
-                    <span className="text-2xl font-bold text-gray-800">Kultura</span>
+                    {/* <span className="text-2xl font-bold text-gray-800">Kultura</span> */}
+                    <img src="/assets/imgs/logo_kultura_long_sansbg.png" height="48px" alt="Logo" className="logo-image" />
                 </Link>
 
                 {/* Search Bar */}
@@ -87,7 +88,7 @@ const Header = () => {
 
                 {/* Navigation Links */}
                 <div className="nav-links">
-                 
+
                     <Link to="/about">About Us</Link>
                     <Link to="/contact">Contact</Link>
                     {isLoggedIn && (
