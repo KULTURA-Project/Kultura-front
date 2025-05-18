@@ -109,6 +109,10 @@ a:focus {
   transition: background-color 0.2s ease-in-out;
 }
 
+.btn-pill {
+  border-radius: 999px;
+}
+
 .btn-primary {
   color: var(--color-white);
   background-color: var(--color-terra);

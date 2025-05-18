@@ -12,7 +12,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import CartPage from "./pages/CartPage";
 import CategoryProductsPage from "./pages/CategoryProductsPage";
 import ContactPage from "./pages/ContactPage";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import LoginPage from './pages/LoginPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import OrdersPage from "./pages/OrdersPage";

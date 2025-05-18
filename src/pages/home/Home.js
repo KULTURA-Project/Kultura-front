@@ -1,10 +1,10 @@
 // Home.js  <MostWishedProduct product={mostWishedProduct} />       <Promotions promotions={promotions} />
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Categories from '../components/Categories';
-import FeaturedProducts from '../components/FeaturedProducts';
-import HeroSection from '../components/HeroSection';
-import Recommendations from '../components/Recommendations';
+import Categories from '../../components/Categories';
+import FeaturedProducts from '../../components/FeaturedProducts';
+import HeroSection from '../../components/hero-section/HeroSection';
+import Recommendations from '../../components/Recommendations';
 
 
 const Home = () => {
@@ -73,7 +73,7 @@ const Home = () => {
       <Categories categories={categories} />
       <FeaturedProducts products={featuredProducts} />
 
-  
+
       <Recommendations products={recommendations} />
     </div>
   );
