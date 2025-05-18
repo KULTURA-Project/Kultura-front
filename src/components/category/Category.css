@@ -1,0 +1,50 @@
+/* -------------------------------------------
+File: Category.css
+Styles pour le composant Category
+------------------------------------------- */
+
+.category {
+  font-family: "Playfair Display", serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-terra);
+  background-color: var(--color-white);
+}
+
+/* Forme normale : pill */
+.category--normal {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Forme full : carte verticale */
+.category--full {
+  flex-direction: column;
+  width: 120px;
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  background-color: var(--color-white);
+}
+
+/* Icône (seulement full) */
+.category-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-terra);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  color: var(--color-white);
+}
+
+/* Label commun */
+.category-label {
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+  padding: 0.25rem 0;
+}

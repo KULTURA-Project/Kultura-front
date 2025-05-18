@@ -68,7 +68,7 @@
 .hero-texth2 {
   font-family: "PlayfairDisplay", serif;
   font-size: 2rem;
-  color: #a93226;
+  color: var(--color-terra);
   margin-bottom: 0.5rem;
 }
 .hero-tag {

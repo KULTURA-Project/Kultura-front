@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'; // Import Link
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import './Category.css';
+import './Categories.css';
+import Category from '../category/Category';
 
 const Categories = ({ categories }) => {
   const settings = {
@@ -34,12 +35,18 @@ const Categories = ({ categories }) => {
       <h2>Shop by Category</h2>
       <Slider {...settings}>
         {categories.map((category) => (
-          <div key={category.id} className="category-card">
+          // <div key={category.id} className="category-card">
+          //   <Link to={`/category-products/${category.id}`}>
+          //     <div className="category-image-wrapper">
+          //       <img src={category.image} alt={category.name} className="category-image" />
+          //     </div>
+          //     <h3 className="category-name">{category.name}</h3>
+          //   </Link>
+          // </div>
+
+          <div className='category-card' key={category.id}>
             <Link to={`/category-products/${category.id}`}>
-              <div className="category-image-wrapper">
-                <img src={category.image} alt={category.name} className="category-image" />
-              </div>
-              <h3 className="category-name">{category.name}</h3>
+              <Category label={category.name} form="full" />
             </Link>
           </div>
         ))}

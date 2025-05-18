@@ -1,7 +1,7 @@
 // Home.js  <MostWishedProduct product={mostWishedProduct} />       <Promotions promotions={promotions} />
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Categories from '../../components/Categories';
+import Categories from '../../components/categories/Categories';
 import FeaturedProducts from '../../components/FeaturedProducts';
 import HeroSection from '../../components/hero-section/HeroSection';
 import Recommendations from '../../components/Recommendations';
