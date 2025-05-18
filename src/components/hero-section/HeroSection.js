@@ -119,8 +119,10 @@ const HeroSection = () => {
         <div className="hero-pattern right" />
 
         {/* Controls */}
-        <button className="carousel-btn prev" onClick={prevSlide}>&lt;</button>
-        <button className="carousel-btn next" onClick={nextSlide}>&gt;</button>
+        <button className="carousel-btn prev" onClick={prevSlide}>{'<'}</button>
+        {/* <button className="carousel-btn prev" onClick={prevSlide}>&lt;</button> */}
+        <button className="carousel-btn next" onClick={nextSlide}>{'>'}</button>
+        {/* <button className="carousel-btn next" onClick={nextSlide}>&gt;</button> */}
     </section>
 
 

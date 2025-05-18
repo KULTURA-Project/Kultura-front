@@ -25,26 +25,26 @@ function App() {
         <Router>
             <div className="d-flex flex-column min-vh-100">
                 <Header />
-                <main className="container flex-grow-1">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/shop" element={<ShopPage />} />
-                        <Route path="/about" element={<AboutUsPage />} />
-                        <Route path="/profile" element={<ProfilePage />} />
-                        <Route path="/orders" element={<OrdersPage />} />
-                        <Route path="/contact" element={<ContactPage />} />
-                        <Route path="/wishlist" element={<WishlistPage />} />
-                        <Route path="/orders" element={<OrdersPage />} />
-                        <Route path="/orders/:orderId" element={<OrderConfirmationPage />} />
-                        <Route path="/cart" element={<CartPage />} />
-                        <Route path="/register" element={<RegisterPage />} />
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route path="/logout" element={<Logout />} />
-                        <Route path="/category-products/:category_id" element={<CategoryProductsPage />} />
-                        <Route path="/products/:slug" element={<ProductPage />} />
-                        <Route path="/products/:id" element={<ProductDetail />} />
-                    </Routes>
-                </main>
+                {/* <main className="container flex-grow-1"> */}
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/shop" element={<ShopPage />} />
+                    <Route path="/about" element={<AboutUsPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/orders" element={<OrdersPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/wishlist" element={<WishlistPage />} />
+                    <Route path="/orders" element={<OrdersPage />} />
+                    <Route path="/orders/:orderId" element={<OrderConfirmationPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="/category-products/:category_id" element={<CategoryProductsPage />} />
+                    <Route path="/products/:slug" element={<ProductPage />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
+                </Routes>
+                {/* </main> */}
                 <Footer />
             </div>
         </Router>
