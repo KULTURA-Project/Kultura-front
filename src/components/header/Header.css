@@ -1,0 +1,110 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap");
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: "Roboto", sans-serif;
+}
+
+/* Logo */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  width: auto;
+  height: 40px;
+}
+
+.logo-text {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: #a93226;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  width: 350px;
+  border: 1px solid #a93226;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #333333;
+}
+
+.search-bar button {
+  background-color: #a93226;
+  border: none;
+  padding: 0 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #a93226;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Icons */
+.icon-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon-wrapper {
+  position: relative;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #e8dcca;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a93226;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #a93226;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

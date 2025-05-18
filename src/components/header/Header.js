@@ -1,0 +1,115 @@
+import axios from 'axios';
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from 'react';
+import { FaBars, FaChevronLeft, FaChevronRight, FaHeart, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "./Header.css";
+
+const Header = () => {
+    const [categories, setCategories] = useState([]);
+    const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token')); // Check token on initial render
+    const location = useLocation();
+    const navigate = useNavigate();
+    const sliderRef = useRef(null);
+
+    // Fetch categories
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/categories/');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setCategories(data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    // Watch for token changes
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token); // Update login state based on token presence
+    }, [location]); // Re-run when location changes (e.g., after login)
+
+    // Slider controls
+    const slideLeft = () => {
+        if (sliderRef.current) sliderRef.current.scrollLeft -= 200;
+    };
+
+    const slideRight = () => {
+        if (sliderRef.current) sliderRef.current.scrollLeft += 200;
+    };
+
+    // Toggle dropdowns
+    const toggleUserDropdown = () => setIsUserDropdownOpen(!isUserDropdownOpen);
+    const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+    // Handle logout
+    const handleLogout = async () => {
+        try {
+            await axios.post('http://127.0.0.1:8000/api/customers/logout/', {}, {
+                headers: { Authorization: `Token ${localStorage.getItem('token')}` },
+            });
+            localStorage.removeItem('token');
+            setIsLoggedIn(false); // Update state to trigger re-render
+            navigate('/login'); // Redirect to login page
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <header className="header">
+            {/* Logo */}
+            <div className="logo-section">
+                <img src="/assets/imgs/logo_kultura_long_sansbg.png" alt="Kultura Logo" className="logo-img" />
+                {/* <h1 className="logo-text">KULTURA</h1> */}
+            </div>
+
+            {/* Search Bar */}
+            <div className="search-bar">
+                <input type="text" placeholder="lorem ipsum, ipsum lorem" />
+                <button>
+                    <FaSearch size={16} />
+                </button>
+            </div>
+
+            {/* Navigation */}
+            <nav className="nav-links">
+                <a href="#">Accueil</a>
+                <a href="#">Nos Articles</a>
+                <a href="#">Categories</a>
+                <a href="#">A propos</a>
+                <a href="#">Contact</a>
+            </nav>
+
+            {/* Icons */}
+            <div className="icon-buttons">
+                <IconCircle icon={<FaUser size={16} />} />
+                <IconCircle icon={<FaShoppingCart size={16} />} badge={2} />
+                <IconCircle icon={<FaHeart size={16} />} badge={5} />
+            </div>
+        </header>
+    );
+}
+
+function IconCircle({ icon, badge }) {
+    return (
+        <div className="icon-wrapper">
+            <div className="icon-circle">
+                {icon}
+            </div>
+            {badge && <span className="badge">{badge}</span>}
+        </div>
+    );
+
+};
+
+export default Header;
