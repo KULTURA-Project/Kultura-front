@@ -1,0 +1,115 @@
+.checkout-container {
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff8f3;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(160,82,45,0.09);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #333;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.checkout-left {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+.checkout-right {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+.checkout-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #A0522D;
+  padding-bottom: 8px;
+  color: #A0522D;
+  letter-spacing: 1px;
+}
+.checkout-input-group {
+  margin-bottom: 15px;
+}
+.checkout-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #A0522D;
+}
+.checkout-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.3px solid #C97B63;
+  background: #fff;
+  color: #8B4A2F;
+  margin-bottom: 8px;
+}
+.checkout-order-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.checkout-order-list-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+.checkout-total-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  text-align: right;
+  color: #A7A844;
+}
+.checkout-card-logos {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.checkout-card-logo {
+  height: 30px;
+  object-fit: contain;
+}
+.checkout-error-message {
+  background: #f8d7da;
+  color: #842029;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border: 1px solid #f5c2c7;
+  text-align: center;
+}
+.checkout-btn {
+  width: 100%;
+  background: #A0522D;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 18px;
+}
+.checkout-btn:disabled {
+  background: #A7A844;
+  color: #fff;
+  cursor: not-allowed;
+}
+.checkout-btn:hover:not(:disabled) {
+  background: #A7A844;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .checkout-container {
+    flex-direction: column;
+    padding: 12px 2vw;
+  }
+}

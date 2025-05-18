@@ -1,75 +1,93 @@
 /* WishlistPage.css */
 .wishlist-page {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 24px;
+  background-color: #FAF7F2; /* Warm beige */
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(139, 74, 47, 0.08);
+  color: #8B4A2F;
+  max-width: 95%;
+  margin: 24px auto;
+  letter-spacing: 0.5px;
 }
 
 /* Breadcrumbs Styles */
 .breadcrumbs {
-  font-size: 14px;
-  color: #6c757d;
-  margin-bottom: 10px;
+  font-size: 15px;
+  color: #A0522D;
+  margin-bottom: 12px;
+  font-family: inherit;
 }
 
 .breadcrumbs a {
-  color: #007bff;
+  color: #A0522D;
   text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumbs a:hover {
+  color: #8B4A2F;
+  text-decoration: underline;
 }
 
 .breadcrumbs span {
   margin: 0 5px;
+  color: #C97B63;
 }
 
+/* Page Title */
 .wishlist-page h2 {
-  color: #343a40;
-  margin-bottom: 20px;
+  color: #8B4A2F;
+  margin-bottom: 24px;
   text-align: center;
-  font-size: 24px;
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
+/* Wishlist Table */
 .wishlist-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  overflow: hidden; /* Ensures rounded corners are respected */
+  border: 1.5px solid #EDEDED;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .wishlist-table th,
 .wishlist-table td {
-  padding: 12px 15px;
+  padding: 14px 18px;
   text-align: left;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1.5px solid #EDEDED;
 }
 
 .wishlist-table th {
-  background-color: #e9ecef;
-  color: #495057;
-  font-weight: 600;
+  background-color: #F5E6D6;
+  color: #A0522D;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-size: 16px;
 }
 
 .wishlist-table tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: #FAF7F2;
 }
 
 .wishlist-table img {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
   display: block;
   margin: 0 auto;
 }
 
 .no-image {
-  color: #6c757d;
+  color: #A0522D;
   font-style: italic;
   text-align: center;
 }
@@ -78,63 +96,70 @@
 .add-to-cart-button,
 .remove-from-wishlist-button {
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s, color 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 7px;
   min-width: 120px;
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 .add-to-cart-button {
-  background-color: #28a745;
-  color: #fff;
+  background-color: #A7A844;
+  color: #FAF7F2;
 }
 
 .add-to-cart-button:hover {
-  background-color: #218838;
+  background-color: #A0522D;
+  color: #fff;
 }
 
 .add-to-cart-button:disabled {
-  background-color: #6c757d;
+  background-color: #EDEDED;
+  color: #C97B63;
   cursor: not-allowed;
 }
 
 .remove-from-wishlist-button {
-  background-color: #dc3545;
-  color: #fff;
+  background-color: #C97B63;
+  color: #FAF7F2;
 }
 
 .remove-from-wishlist-button:hover {
-  background-color: #c82333;
+  background-color: #8B4A2F;
+  color: #fff;
 }
 
 /* React Icons Styles */
 .add-to-cart-button svg,
 .remove-from-wishlist-button svg {
-  font-size: 16px; /* Adjust the size as needed */
+  font-size: 18px;
 }
 
 .actions {
   display: flex;
-  flex-direction: column; /* Stack the buttons vertically */
-  align-items: center; /* Center the buttons horizontally */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 10px;
 }
 
 .error-message {
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 5px;
+  color: #C97B63;
+  background-color: #F5E6D6;
+  border: 1px solid #C97B63;
+  border-radius: 6px;
   padding: 10px;
   margin-bottom: 20px;
   text-align: center;
+  font-family: inherit;
 }
 
 /* Responsive Design */
@@ -151,7 +176,7 @@
   .add-to-cart-button,
   .remove-from-wishlist-button {
       font-size: 12px;
-      padding: 6px 10px;
+      padding: 7px 10px;
   }
 
   .actions {

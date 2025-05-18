@@ -4,12 +4,11 @@
   margin: 0 auto;
   padding: 20px;
   gap: 30px;
-
 }
 
 /* Sidebar Styles */
 .sidebar {
-  width: 300px;
+  width: 580px;
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
@@ -54,16 +53,18 @@
 .checkbox-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 /* Checkbox Item Styles */
-.checkbox-list div {
+.checkbox-list div label {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 16px;
   color: #777;
+  line-height: 1.2; /* Ensures text is vertically centered */
+  cursor: pointer;
 }
 
 /* Larger Checkbox Input Styles */
@@ -125,39 +126,104 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 25px;
+  gap: 5px;
+}
+
+/* Force 4 columns on desktop */
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Price Range Section */
+.price-range-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 12px;
+  display: block;
+  letter-spacing: 0.5px;
 }
 
 .price-range-container {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  padding: 18px 16px 14px 16px;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f9f9f9 70%, #f3f6ff 100%);
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.06);
+  margin-bottom: 10px;
+}
+
+.price-range-slider {
+  width: 100%;
+  margin-bottom: 12px;
+  accent-color: #6c63ff;
+  height: 4px;
+  border-radius: 2px;
+  background: #e2e2e2;
 }
 
 .price-range-inputs {
   display: flex;
-  gap: 10px;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 12px;
+  justify-content: flex-start;
 }
 
-.price-range-inputs input[type="number"] {
+.price-input {
   width: 70px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 7px 10px;
+  border: 1.5px solid #c7c7d9;
+  border-radius: 6px;
+  font-size: 15px;
+  background: #fff;
+  transition: border-color 0.2s;
 }
 
-.price-range-inputs input[type="range"] {
-  flex-grow: 1;
-  height: 10px;
-  border-radius: 5px;
-  background: #ddd;
+.price-input:focus {
+  border-color: #6c63ff;
   outline: none;
+}
+
+.price-range-separator {
+  font-size: 18px;
+  color: #6c63ff;
+  font-weight: 600;
+  margin: 0 4px;
+}
+
+/* Optional: Add a subtle shadow to the range thumb */
+.price-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #6c63ff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.15);
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+.price-range-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #6c63ff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.15);
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+/* Hide number input spinners for cleaner look */
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.price-input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* Chrome, Safari, Opera */
@@ -181,39 +247,34 @@
   border-radius: 50%;
   cursor: pointer;
 }
-/* Responsive Media Queries */
-@media (min-width: 1200px) {
-  .product-grid {
-      grid-template-columns: repeat(4, 1fr);
-  }
-}
 
+/* Responsive Media Queries */
 @media (max-width: 1024px) {
   .category-products-page {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 15px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
   }
 
   .sidebar {
-      width: 100%;
-      margin-bottom: 20px;
-      position: static;
-      height: auto;
-      overflow: visible; /* Revert overflow for smaller screens */
+    width: 100%;
+    margin-bottom: 20px;
+    position: static;
+    height: auto;
+    overflow: visible; /* Revert overflow for smaller screens */
   }
 
   .product-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .product-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
   .page-title {
-      font-size: 30px;
+    font-size: 30px;
   }
 }

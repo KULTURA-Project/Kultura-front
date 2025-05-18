@@ -1,6 +1,7 @@
 /* Categories.css */
 .categories-section {
     padding: 2rem;
+    width: 90%;
   }
   
   .categories-section h2 {
@@ -13,7 +14,7 @@
   }
   
   .category-image-wrapper {
-    width: 150px; /* Adjust size as needed */
+    width: 90%; /* Adjust size as needed */
     height: 150px;
     margin: 0 auto;
     border-radius: 50%;

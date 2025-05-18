@@ -1,7 +1,7 @@
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./ProductCard.css";
 
@@ -10,7 +10,6 @@ const ProductCard = ({ product }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to handle adding a product to the cart
   const handleAddToCart = async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -31,7 +30,6 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  // Function to handle adding a product to the wishlist
   const handleAddToWishlist = async (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -52,8 +50,8 @@ const ProductCard = ({ product }) => {
     }
   };
 
-  // Get the first image URL (if available)
   const imageURL = product.images && product.images.length > 0 ? `http://127.0.0.1:8000${product.images[0].image}` : null;
+
   return (
     <div className="product-card">
       <div className="image-container">
@@ -72,24 +70,22 @@ const ProductCard = ({ product }) => {
           <FontAwesomeIcon icon={faHeart} style={{ color: isWishlisted ? 'red' : 'inherit' }} />
         </div>
       </div>
-
       <div className="product-info">
         <Link to={`/products/${product.slug}`} className="product-link">
           <h3 className="product-name">{product.name}</h3>
-          <p className="product-category">{product.category?.name}</p>
         </Link>
+        <p className="product-category">{product.category?.name}</p>
         <div className="product-price">${product.price}</div>
-        <div className="product-actions">
-          <button
-            className="add-to-cart-button"
-            onClick={handleAddToCart}
-            disabled={isAddedToCart}
-          >
-            <FontAwesomeIcon icon={faShoppingCart} /> {isAddedToCart ? 'Added to Cart' : 'Add to Cart'}
-          </button>
-          {error && <div className="error-message">{error}</div>}
-        </div>
+        {error && <div className="error-message">{error}</div>}
       </div>
+      <button
+        className="add-to-cart-fab"
+        onClick={handleAddToCart}
+        disabled={isAddedToCart}
+        title={isAddedToCart ? "Added to Cart" : "Add to Cart"}
+      >
+        <FontAwesomeIcon icon={faShoppingCart} />
+      </button>
     </div>
   );
 };

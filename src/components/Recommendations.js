@@ -28,7 +28,7 @@ const Recommendations = () => {
         <section className="recommendations-section">
             <h2>Recommended Products</h2>
             <div className="recommendations-grid">
-                {recommendedProducts.slice(0, 4).map(product => (
+                {recommendedProducts.slice(0,4).map(product => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>

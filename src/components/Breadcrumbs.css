@@ -2,31 +2,35 @@
 .breadcrumbs {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 20px;
     padding: 10px 0;
-    background-color: #f9f9f9;
+    background-color: #FAF7F2;        /* Soft off-white background */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(139, 74, 47, 0.08); /* Subtle brown shadow */
+    font-family: 'Georgia', 'Times New Roman', serif; /* Vintage feel */
+    color: #8B4A2F;                   /* Main reddish-brown from logo */
 }
 
 .breadcrumbs .separator {
     margin: 0 8px;
-    color: #999;
+    color: #C97B63;                   /* Terracotta accent */
+    font-weight: bold;
 }
 
 .breadcrumbs a {
     text-decoration: none;
-    color: #007bff;
+    color: #8B4A2F;                   /* Logo brown */
     transition: color 0.3s ease-in-out;
+    font-weight: 500;
 }
 
 .breadcrumbs a:hover {
-    color: #0056b3;
+    color: #A0522D;                   /* Sienna for hover */
 }
 
 .breadcrumbs a.active {
-    color: #333;
+    color: #A7A844;                   /* Olive highlight for current page */
     font-weight: bold;
     pointer-events: none;
 }
