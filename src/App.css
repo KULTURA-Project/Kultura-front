@@ -1,32 +1,73 @@
-/* src/App.css */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   margin: 0;
   padding: 0;
+  background-color: #FAF7F2;
+  color: #8B4A2F;
+  letter-spacing: 0.2px;
 }
-
-
 
 .navbar {
   margin-bottom: 20px;
 }
 
+/* Card Styles */
 .card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 1.5px solid #EDEDED;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(139, 74, 47, 0.06);
+  font-family: inherit;
 }
-
-
 
 .card-body {
-  padding: 15px;
+  padding: 18px;
 }
 
-.card-title {
-  font-size: 1.2rem;
+.card-title,
+.card-title a {
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: #8B4A2F;
+  font-family: inherit;
+  text-decoration: none !important; /* Remove underline from product name links */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.card-title a:hover {
+  color: #A0522D;
 }
 
 .card-text {
   font-size: 1rem;
+  color: #2C2C2C;
+  font-family: inherit;
+}
+
+/* Product category styling, remove underline if it's a link */
+.product-category,
+.product-category a {
+  font-size: 13px;
+  color: #A7A844;
+  text-decoration: none !important;
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* General layout wrapper */
+.lay {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* Breadcrumbs (if used globally) */
+.breadcrumbs,
+.breadcrumbs a {
+  font-family: inherit;
+  color: #8B4A2F;
+  text-decoration: none !important;
+  font-size: 15px;
 }
