@@ -142,3 +142,139 @@
   background-color: var(--color-beige);
   color: var(--color-terra);
 }
+
+/* ...existing code... */
+
+/* Hamburger mobile */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-terra);
+  cursor: pointer;
+  margin-left: 0.5rem;
+  z-index: 1101;
+}
+
+/* Menu mobile latéral */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85vw;
+  max-width: 340px;
+  height: 100vh;
+  background: var(--color-white);
+  box-shadow: -2px 0 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.2rem 2rem 1.2rem;
+  z-index: 1100;
+  gap: 1.5rem;
+  animation: slideIn 0.25s;
+}
+
+@keyframes slideIn {
+  from {
+    right: -340px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+.mobile-menu-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--color-terra);
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.mobile-nav .nav-link {
+  font-size: 1.15rem;
+  color: var(--color-terra);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.mobile-nav .nav-link:active,
+.mobile-nav .nav-link:hover {
+  background: var(--color-beige);
+}
+
+.mobile-nav-icons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-icons a {
+  color: var(--color-terra);
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mobile-auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .search-bar {
+    width: 180px;
+  }
+  .nav-links {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 0.7rem 1rem;
+  }
+  .search-bar {
+    width: 120px;
+  }
+  .logo-img {
+    height: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .logo-section {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+  .search-bar {
+    display: none;
+  }
+  .nav-links {
+    display: none;
+  }
+  .icon-buttons {
+    gap: 0.5rem;
+  }
+  .mobile-menu-toggle {
+    display: block;
+  }
+}

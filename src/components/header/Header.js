@@ -74,38 +74,36 @@ const Header = () => {
                 </Link>
             </div>
 
-            {/* Search Bar */}
+            {/* Bouton hamburger mobile */}
+            <button
+                className="mobile-menu-toggle"
+                onClick={toggleMobileMenu}
+                aria-label="Ouvrir le menu"
+            >
+                <FaBars size={24} />
+            </button>
+
+            {/* Search Bar (desktop uniquement) */}
             <div className="search-bar">
-                <input type="text" placeholder="lorem ipsum, ipsum lorem" />
+                <input type="text" placeholder="Rechercher un article, une catégorie..." />
                 <button>
                     <FaSearch size={16} />
                 </button>
             </div>
 
-            {/* Navigation */}
+            {/* Navigation desktop */}
             <nav className="nav-links">
-                <Link to="/" className='nav-link'>
-                    Accueil
-                </Link>
-                <Link to="/articles" className='nav-link'>
-                    Nos Articles
-                </Link>
-                <Link to="/categories" className='nav-link'>
-                    Categories
-                </Link>
-                <Link to="/about" className='nav-link'>
-                    A propos
-                </Link>
-                <Link to="/contact" className='nav-link'>
-                    Contact
-                </Link>
+                <Link to="/" className='nav-link'>Accueil</Link>
+                <Link to="/articles" className='nav-link'>Nos Articles</Link>
+                <Link to="/categories" className='nav-link'>Catégories</Link>
+                <Link to="/about" className='nav-link'>À propos</Link>
+                <Link to="/contact" className='nav-link'>Contact</Link>
             </nav>
 
-            {/* Icons */}
-            <div className="icon-buttons" >
-
+            {/* Icônes */}
+            <div className="icon-buttons">
                 {isLoggedIn ? (
-                    <div onClick={toggleUserDropdown}>
+                    <div className="user-icon-wrapper" onClick={toggleUserDropdown}>
                         <IconCircle icon={<FaUser size={16} />} />
                         <AnimatePresence>
                             {isUserDropdownOpen && (
@@ -115,25 +113,19 @@ const Header = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
                                 >
-                                    <Link to="/profile">Profile</Link>
-                                    <Link to="/orders">Orders</Link>
-                                    <Link to="/" onClick={handleLogout}>Logout</Link>
+                                    <Link to="/profile">Profil</Link>
+                                    <Link to="/orders">Commandes</Link>
+                                    <Link to="/" onClick={handleLogout}>Déconnexion</Link>
                                 </motion.div>
                             )}
                         </AnimatePresence>
                     </div>
                 ) : (
                     <div className='auth-buttons-wrapper'>
-                        <button className='btn btn-primary-outline'>
-                            S'inscrire
-                        </button>
-
-                        <button className='btn btn-primary'>
-                            Se connecter
-                        </button>
+                        <button className='btn btn-primary-outline'>S'inscrire</button>
+                        <button className='btn btn-primary'>Se connecter</button>
                     </div>
                 )}
-
                 {isLoggedIn && (
                     <>
                         <Link to='/cart'>
@@ -145,6 +137,55 @@ const Header = () => {
                     </>
                 )}
             </div>
+
+            {/* Menu mobile latéral */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.nav
+                        className="mobile-nav"
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: "tween", duration: 0.25 }}
+                    >
+                        <button
+                            className="mobile-menu-close"
+                            onClick={toggleMobileMenu}
+                            aria-label="Fermer le menu"
+                        >
+                            <FaChevronRight size={24} />
+                        </button>
+                        <div className="mobile-nav-links">
+                            <Link to="/" className='nav-link' onClick={toggleMobileMenu}>Accueil</Link>
+                            <Link to="/articles" className='nav-link' onClick={toggleMobileMenu}>Nos Articles</Link>
+                            <Link to="/categories" className='nav-link' onClick={toggleMobileMenu}>Catégories</Link>
+                            <Link to="/about" className='nav-link' onClick={toggleMobileMenu}>À propos</Link>
+                            <Link to="/contact" className='nav-link' onClick={toggleMobileMenu}>Contact</Link>
+                        </div>
+                        <div className="mobile-nav-icons">
+                            {isLoggedIn && (
+                                <>
+                                    <Link to='/cart' onClick={toggleMobileMenu}>
+                                        <IconCircle icon={<FaShoppingCart size={18} />} badge={2} />
+                                    </Link>
+                                    <Link to='/wishlist' onClick={toggleMobileMenu}>
+                                        <IconCircle icon={<FaHeart size={18} />} badge={5} />
+                                    </Link>
+                                    <Link to="/profile" onClick={toggleMobileMenu}>Profil</Link>
+                                    <Link to="/orders" onClick={toggleMobileMenu}>Commandes</Link>
+                                    <Link to="/" onClick={() => { handleLogout(); toggleMobileMenu(); }}>Déconnexion</Link>
+                                </>
+                            )}
+                            {!isLoggedIn && (
+                                <div className="mobile-auth-buttons">
+                                    <button className='btn btn-primary-outline' onClick={toggleMobileMenu}>S'inscrire</button>
+                                    <button className='btn btn-primary' onClick={toggleMobileMenu}>Se connecter</button>
+                                </div>
+                            )}
+                        </div>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
         </header>
     );
 }
