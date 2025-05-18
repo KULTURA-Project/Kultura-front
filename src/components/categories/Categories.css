@@ -10,6 +10,7 @@
 
 .category-card {
   text-align: center;
+  width: min-content;
 }
 
 .category-image-wrapper {
