@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaBars, FaChevronLeft, FaChevronRight, FaHeart, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";

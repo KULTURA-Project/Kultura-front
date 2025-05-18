@@ -6,7 +6,7 @@ import './ProductPage.css';
 const ProductPage = () => {
   const { slug } = useParams();
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+
   const [activeTab, setActiveTab] = useState('history');
   const [addToCartLoading, setAddToCartLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -46,7 +46,7 @@ const ProductPage = () => {
         'http://127.0.0.1:8000/orders/cart/add/',
         {
           product_id: productId || product.id,
-          quantity: quantity,
+       
         },
         {
           headers: {
