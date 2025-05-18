@@ -72,8 +72,6 @@ const Home = () => {
       <HeroSection />
       <Categories categories={categories} />
       <FeaturedProducts products={featuredProducts} />
-
-
       <Recommendations products={recommendations} />
     </div>
   );
