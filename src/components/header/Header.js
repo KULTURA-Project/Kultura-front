@@ -48,7 +48,7 @@ const Header = () => {
     };
 
     // Toggle dropdowns
-    const toggleUserDropdown = () => setIsUserDropdownOpen(!isUserDropdownOpen);
+    const toggleUserDropdown = () => setIsUserDropdownOpen(!isUserDropdownOpen, console.log('User dropdown toggled'));
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     // Handle logout
@@ -69,8 +69,9 @@ const Header = () => {
         <header className="header">
             {/* Logo */}
             <div className="logo-section">
-                <img src="/assets/imgs/logo_kultura_long_sansbg.png" alt="Kultura Logo" className="logo-img" />
-                {/* <h1 className="logo-text">KULTURA</h1> */}
+                <Link to='/'>
+                    <img src="/assets/imgs/logo_kultura_long_sansbg.png" alt="Kultura Logo" className="logo-img" />
+                </Link>
             </div>
 
             {/* Search Bar */}
@@ -83,18 +84,66 @@ const Header = () => {
 
             {/* Navigation */}
             <nav className="nav-links">
-                <a href="#">Accueil</a>
-                <a href="#">Nos Articles</a>
-                <a href="#">Categories</a>
-                <a href="#">A propos</a>
-                <a href="#">Contact</a>
+                <Link to="/" className='nav-link'>
+                    Accueil
+                </Link>
+                <Link to="/articles" className='nav-link'>
+                    Nos Articles
+                </Link>
+                <Link to="/categories" className='nav-link'>
+                    Categories
+                </Link>
+                <Link to="/about" className='nav-link'>
+                    A propos
+                </Link>
+                <Link to="/contact" className='nav-link'>
+                    Contact
+                </Link>
             </nav>
 
             {/* Icons */}
-            <div className="icon-buttons">
-                <IconCircle icon={<FaUser size={16} />} />
-                <IconCircle icon={<FaShoppingCart size={16} />} badge={2} />
-                <IconCircle icon={<FaHeart size={16} />} badge={5} />
+            <div className="icon-buttons" >
+
+                {isLoggedIn ? (
+                    <div onClick={toggleUserDropdown}>
+                        <IconCircle icon={<FaUser size={16} />} />
+                        <AnimatePresence>
+                            {isUserDropdownOpen && (
+                                <motion.div
+                                    className="user-dropdown"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                >
+                                    <Link to="/profile">Profile</Link>
+                                    <Link to="/orders">Orders</Link>
+                                    <Link to="/" onClick={handleLogout}>Logout</Link>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                ) : (
+                    <div className='auth-buttons-wrapper'>
+                        <button className='btn btn-primary-outline'>
+                            S'inscrire
+                        </button>
+
+                        <button className='btn btn-primary'>
+                            Se connecter
+                        </button>
+                    </div>
+                )}
+
+                {isLoggedIn && (
+                    <>
+                        <Link to='/cart'>
+                            <IconCircle icon={<FaShoppingCart size={16} />} badge={2} />
+                        </Link>
+                        <Link to='/wishlist'>
+                            <IconCircle icon={<FaHeart size={16} />} badge={5} />
+                        </Link>
+                    </>
+                )}
             </div>
         </header>
     );

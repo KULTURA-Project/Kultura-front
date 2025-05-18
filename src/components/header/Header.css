@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #ffffff;
+  background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   font-family: "Roboto", sans-serif;
 }
@@ -26,7 +26,7 @@
 .logo-text {
   font-family: "Playfair Display", serif;
   font-size: 1.8rem;
-  color: #a93226;
+  color: var(--color-terra);
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -35,7 +35,7 @@
 .search-bar {
   display: flex;
   width: 350px;
-  border: 1px solid #a93226;
+  border: 1px solid var(--color-terra);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -46,14 +46,14 @@
   border: none;
   outline: none;
   font-size: 0.9rem;
-  color: #333333;
+  color: var(--color-dark);
 }
 
 .search-bar button {
-  background-color: #a93226;
+  background-color: var(--color-terra);
   border: none;
   padding: 0 1rem;
-  color: white;
+  color: var(--color-white);
   cursor: pointer;
 }
 
@@ -63,11 +63,17 @@
   gap: 1rem;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .nav-link {
   text-decoration: none;
-  color: #a93226;
+  color: var(--color-terra);
   font-weight: 500;
   font-size: 0.95rem;
+}
+
+.nav-links .nav-link:hover {
+  color: var(--color-terra);
+  text-decoration: underline;
 }
 
 /* Icons */
@@ -84,20 +90,20 @@
 .icon-circle {
   width: 40px;
   height: 40px;
-  background-color: #e8dcca;
+  background-color: var(--color-beige);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #a93226;
+  color: var(--color-terra);
 }
 
 .badge {
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: #a93226;
-  color: white;
+  background-color: var(--color-terra);
+  color: var(--color-white);
   font-size: 0.7rem;
   font-weight: bold;
   border-radius: 50%;
@@ -107,4 +113,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 50px; /* ajustable selon la hauteur de ton header */
+  right: 0;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-ocre);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  padding: 0.5rem 0;
+}
+
+.user-dropdown a {
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: var(--color-dark);
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.user-dropdown a:hover {
+  background-color: var(--color-beige);
+  color: var(--color-terra);
 }
