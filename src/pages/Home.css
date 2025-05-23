@@ -1,173 +1,69 @@
-/* General Styles */
 .home-page {
+  background: #FAF7F2;
+  min-height: 100vh;
   font-family: 'Georgia', 'Times New Roman', serif;
-  color: #8B4A2F;
+}
+
+.home-section {
+  margin: 3rem auto;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #FAF7F2;
+  padding: 0 1.5rem;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: 2.3rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #8B4A2F;
-  font-family: inherit;
-  font-weight: bold;
-  letter-spacing: 2px;
+.hero-section {
+  margin-bottom: 2.5rem;
 }
 
-/* Featured Products Section */
-.featured-products-section {
-  margin: 4rem 0;
-}
-
-.featured-products-slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero-slide {
   position: relative;
-}
-
-.feature-products-container {
-  width: 90%;
-  overflow: hidden;
-}
-
-.feature-products-inner {
+  min-height: 340px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(160,82,45,0.09);
   display: flex;
-  gap: 20px;
-  transition: transform 0.5s ease-in-out;
+  align-items: flex-end;
 }
 
-.slider-button {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #A0522D;
-  transition: color 0.3s;
-  border-radius: 50%;
-  padding: 0.2rem 0.5rem;
-}
-
-.slider-button:hover {
-  color: #A7A844;
-  background: #F5E6D6;
-}
-
-/* Categories Section */
-.categories-section {
-  margin: 4rem 0;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-}
-
-.category-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(139, 74, 47, 0.07);
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 1.5px solid #EDEDED;
-}
-
-.category-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(139, 74, 47, 0.13);
-  border-color: #A7A844;
-}
-
-.category-image {
+.hero-content {
+  background: rgba(250, 247, 242, 0.88);
+  padding: 2rem 2.5rem;
+  border-radius: 0 0 18px 18px;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background: #FAF7F2;
-}
-
-.category-name {
-  font-size: 1.5rem;
-  margin: 1rem 0 0.5rem 0;
-  color: #A0522D;
-  font-family: inherit;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
-
-.category-description {
-  font-size: 1rem;
-  color: #8B4A2F;
-  padding: 0 1rem 1rem;
-  font-family: inherit;
-}
-
-/* About Us Section */
-.about-us-section {
-  margin: 4rem 0;
-  text-align: center;
-}
-
-.about-us-content {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.13rem;
-  line-height: 1.7;
-  color: #A0522D;
-  font-family: inherit;
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(139, 74, 47, 0.06);
-}
-
-/* Call to Action Section */
-.cta-section {
-  margin: 4rem 0;
-  text-align: center;
-  background: #A7A844;
-  padding: 2.5rem 1rem;
-  border-radius: 12px;
-  color: #fff;
-  font-family: inherit;
-  box-shadow: 0 2px 12px rgba(139, 74, 47, 0.06);
 }
 
 .cta-button {
   background: #A0522D;
   color: #fff;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-family: inherit;
+  padding: 0.7rem 2rem;
+  border-radius: 8px;
   font-weight: bold;
-  letter-spacing: 1px;
-  margin-top: 1rem;
-  transition: background 0.3s, color 0.3s;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s;
 }
-
 .cta-button:hover {
-  background: #8B4A2F;
+  background: #A7A844;
   color: #fff;
 }
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 4rem;
-  padding: 1.3rem 0;
-  background: #8B4A2F;
-  color: #FAF7F2;
-  border-radius: 12px;
-  font-family: inherit;
-  font-size: 1rem;
-  letter-spacing: 1px;
+.hero-dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #A0522D;
+  border-radius: 50%;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.dot.active {
+  opacity: 1;
+  background: #A7A844;
 }
