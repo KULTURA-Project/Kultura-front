@@ -249,6 +249,8 @@
 }
 
 /* Responsive Media Queries */
+
+
 @media (max-width: 1024px) {
   .category-products-page {
     flex-direction: column;
